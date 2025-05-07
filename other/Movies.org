@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       959af928-c8c9-44a1-90a7-68d8cd2c7828
+:END:
+#+TITLE: Movies
+[[id:95e7a408-1f8f-4976-9a19-c170298a302c][Miscellaneous]]
+- [ ] Black Mirror (series)
+- [ ] Stranger Things (series)
+- [ ] Primer
+- [ ] Dark
+- [ ] Cronocrimenes (time crimes)
+- [ ] twelve monkeys
+- [ ] Edge of Tomorrow  
+- [X] Tenet
+- [X] Gemini man
+- [X] Predestination
+- [X] The Tomorrow War
+- [ ] Annihilation
+- [ ] +Life+
+- [ ] Prometheus
+- [ ] Coherence
+
+- [ ] Constantine (1; 2 upcoming 2025)
+- [ ] Tron (Ares)
+- [ ] Black Bag
+- [ ] +Novococaine+
+- [ ] https://editorial.rottentomatoes.com/article/the-most-anticipated-movies-of-2025/
+- [ ] +Companion+

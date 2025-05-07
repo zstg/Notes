@@ -1,0 +1,23 @@
+:PROPERTIES:
+:ID:       193f9e83-2258-4893-be02-e487f2f80ddb
+:END:
+#+title: Game Programming
+[[id:da697895-3aeb-40a8-b4c3-ad7d679487a8][GP Theory]]
+[[id:fb07642e-e6ef-46b2-b287-c529d4e1a84a][GP Lab]]
+
+* DA1
+** Zeroth review
+- submit b4 CAT1
+- compare ur solution with existing solutions in the market (apps and research/conf articles)
+- proper perf metrics
+
+** DA1
+- come up with outline and a clear basic functionalities.
+- explain to ma'am (team ok) - no need for PPT
+
+** DA2
+- 80% implementation
+- complete b4 CAT2
+
+** DA3
+- submit full doc

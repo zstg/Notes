@@ -1,0 +1,83 @@
+:PROPERTIES:
+:ID:       c79ccbae-4f55-4f4f-bbc5-4717022964b7
+:END:
+#+title: CNS Module 1 Fundamentals of number theory
+
+* Classical encryption techniques
+- Trad crypt systems lay the foundation for modern cryptography.
+
+#+BEGIN_VERSE
+*Cryptography*: Study, creation of enc methods (schemes)
+*Cryptanalysis*: breaking crypto algos to deduce the plaintext
+*Cryptology*:
+#+END_VERSE
+
+* Dimensions/Factors for cryptography
+- type of operations used to transform plaintext to ciphertext
+- no of keys used
+- The way in which the plaintext is processed
+
+* Cryptanalysis
+** Brute-force approach
+~n~-bit key ⇒ 2^n poss no of trials
+** Types of attacks
+
+|-------------+------------------------|
+| Attack type | Known to cryptoanalyst |
+|-------------+------------------------|
+| Ciphertext  | - enc algo             |
+|             | - ciphertext           |
+|-------------+------------------------|
+|             |                        |
+
+* Cybersecurity
+** TODO Definition
+#+BEGIN_DEFINITION
+Superset of communication, infosec, network, software and Physical security
+TODO include a proper definition
+#+END_DEFINITION
+
+
+** Types of cybersec
+*** Authentication
++*** Authorization+
+*** Access Control
+*** Data confidentiality
+*** Data integrity
+*** Non-repudiation
+*** Availability
+
+** Types of attacks
+*** Active
+**** Eavesdropping
+**** Traffic Analysis
+*** Passive
+**** Modification
+**** Masquerading
+**** Replay
+**** DoS
+
+** Types of algorithms
+*** Keyless
+*** Single key
+*** 2-key
+
+** Security challenges
+
+
+** Ciphers
+*** Transposition
+*** Substitution
+
+TODO
+- Caesar
+- Monoalphabetic
+- Polyalphabetic
+- Playfair
+- Hill
+- Polyalphabetic
+  - Vigenère
+  - Vernam   
+  - One-Time Pad
+- Transposition
+  - Rail fence

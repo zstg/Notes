@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       799a733e-5edc-4670-8ec3-bc7b9a45a96e
+:END:
+#+title: GRE points
+[[id:bf944b03-f858-4374-ae16-4dcd8eaf6a42][Academics]]
+- analytical writing: backup with claims/data/facts, do not use extreme language → prefer stats over anecdotes
+- inference type questions → answer very broadly, do not overthink - eliminate extreme answers (will, should bad - may good)
+
+
+
+* 28/9
+** Arg questions
+- claim/conclusion (ending in thus, therefore, so, hence, clearly, for this reason etc) rest on assumptions, based on/backed up by evidence (since, due to, bcos of, if,when etc)
+  - _why_ test: Ask "Why?" - if it has an answer, it becomes the evidence. (You don't ask "why" to evidence - evidence is taken to be fact).
+    claim +<->+ → evidence
+- evidence

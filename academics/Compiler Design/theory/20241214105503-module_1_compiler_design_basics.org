@@ -1,0 +1,101 @@
+:PROPERTIES:
+:ID:       c4116524-fce9-4dbe-a534-40d76f3b4dfa
+:END:
+#+title: Compiler Design Module 1 Compiler Design basics
+
+* Basic components
+#+begin_verse
+Pre-processor → Compiler → Assembler → Linker → Loader
+#+end_verse
+
+** Proprocessor
+- Macro processing
+- File inclusion ("linking")
+- Lang extensions (for example adding database querying capabilities to the lang)
+** Assembler
+- Assigns mem locations to ~symbols~ (called ~identifiers~)
+- Ensures that the same address is used for all occurences of an identifier (and obviously that diff identifiers are allocated diff adddresses)
+- Whenever a new identifier is encountered an ~(identifier, address)~ is stored in a ~symbol table~.
+- When an identifier is encountered its address is looked up in the symbol table. This value is used in the generated machine instruction.
+** Linkers
+- Combine and bring together the output of the assembler.
+- Link the required external libraries to the source programs.
+ ... 
+
+* Steps
+** Analysis (frontend)
+- break up src prog into /constituent pieces/
+- impose /grammatical structure/
+- create /intermeiate repr/ of src prog
+- /error det/ (syntactic error, ill-formed statements)
+- update /symbol table/
+** Synthesis (backend)
+- construct target prog from the /intermediate repr/ (Platform-specic Assembly) and from the symbol table
+
+** Lexical analysis
+- aka scanning
+- Read char stream making up the src prog and /group the chars/ into _lexemes_. A lexeme is a meaningful group of characters.
+- The LA prod a ~(token name, attribute value)~ token for each lexeme.
+- Syntax analysis: ~attribute value~ points to an entry - in the ~symbol table~ -  for a certain ~token name~.
+
+  #+BEGIN_EXAMPLE
+  if x < 10
+  #+END_EXAMPLE
+
+  | Token                 | Attribute                  | Data type |
+  | id                    | x                          | int       |
+  | id                    | z                          | float     |
+  | keyword               | if                         | -         |
+  | (assignment) operator | ~=~ (no concrete attr value) | -         |
+
+** Syntax analysis
+- aka parsing
+- uses the first components of the tokens prod by LA to create a tree that rep the ~grammatical structure~ of the tokens
+
+  (refer example in book)
+
+** Semantic analysis
+- data type compat
+#+BEGIN_SRC python
+D = C + A
+#+END_SRC
+
+- If D is int, C and A are doubles, report error
+- If D if double, A and/or C are ints, convert A and C to float (_typecasting_ and implicit conversion, 2B to store int → 4B for float)
+  - ~arr[0] -> 2000 + 0*4~ ->  address (2004)₁₀ in memory
+- Array index is float... ~arr[3.14]~
+
+  These kinds of errors are not syntax errors, they're purely semantic.
+
+** Intermediate code gen
+(notes)
+- at most 1 op on RHS
+- use compiler-generated temp names
+
+** Code optimization
+- sometimes compiler-generated code may have:
+  - redundant code
+  - dead code
+  - unnecessary assignments etc
+
+- Use code optimization to make code faster and simpler.
+- significantly improve runtime
+  
+  #+begin_src python
+  T1 = inttoreal(2)
+  T2 = b + c
+  T3 = b + c
+  T4 = T2 * T3
+  T5 = T4 * T1
+  a = T5
+  #+end_src
+  
+** Code generation
+- Code generator takes ~intermediate repr~ of source prog and maps it to ~target lang~
+- 
+- 
+- 
+- 
+  
+** Target code optimization
+** Symbol table :important:

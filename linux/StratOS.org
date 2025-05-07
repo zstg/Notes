@@ -1,0 +1,39 @@
+:PROPERTIES:
+:id: ed840561-c7fe-4ced-ad5e-ef4b7c87eaa1
+:END:
+#+TITLE: StratOS todo
+- [-] Move submodules to distinct config packages
+  - [X] stratmacs
+  - [ ] stratvim
+  - [X] fish
+  - [-] starship
+  - [X] calamares
+  - [ ] hyprland?
+  - [X] waybar
+  - [X] kitty
+- [X] TODO finish StratOS repo fix some packages
+- [ ] build new GNOME and Hyprland ISOs
+- [X] Update brl
+- [ ] remove conky from stratos, place in website
+- [ ] remove nwg-dock-hyprland
+- [ ] udiskie, brightnessctl, pavucontrol, (librewolf vs *floorp* vs zen ...)
+- [ ] heroic-games-launcher-bin, gamemode
+- [ ] shell history not getting saved - fix
+- [ ] multilib
+- [X] sep keybindings.conf
+- [ ] swayosd-git
+- [ ] fix keybindings (dont blindly use ur HL config)
+- [ ] preload nwg-clipman and others in hl conf
+- [ ] hyprland config /may/  need fixing
+- +git submodules like maneki-neko dont get cloned+
+- [ ] update maneki pics (newer pics)
+- [ ] Calamares - give an option to install apps there itself  (check arcadia-calamares-config)
+  - operations: try-remove
+- [ ] why is the NetworkManager icon blue
+- [ ] proper semver for ISO and packages
+- [ ] set up powertop and +tlp+ power-profiles-daemon
+- [ ] *Fix Calamares not being able to install the distro*
+- [ ] Have a look at making the mirrors
+- [ ] Grab repo issue
+- [ ] Check out aurutils for the packages that are failing to build
+- [ ] Update Maneki neko for Hyprland (consider =nwg-look= (and =lxappearance= ?))

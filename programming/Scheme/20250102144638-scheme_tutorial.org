@@ -1,0 +1,343 @@
+:PROPERTIES:
+:ID:       e7315754-31af-4bd5-8248-3fd923ff06b6
+:END:
+#+title: Scheme Tutorial
+
+* Introduction
+I'm using Guile Scheme because ~guile~ is installed on my system as a dependency of ~make~.
+
+* Basics
+** Defining Variables
+You can define a variable using the ~define~ keyword:
+#+BEGIN_SRC scheme
+(define variable-name 'value)
+(display variable-name)
+(newline)
+#+END_SRC
+
+** Scope
+#+begin_src scheme
+(let ((name "Stig"))
+  (string-append "Hi Ze" name))
+#+end_src
+If you try using the ~name~ variable outside this scope you'll get an error.
+Note the double parentheses after the ~let~ expression...
+
+** Changing Variable Values
+To change the value of a previously defined variable, use ~set!~:
+#+BEGIN_SRC scheme
+(set! variable-name "Nah")
+#+END_SRC
+
+* Data Types and Operations
+** Strings and Symbols
+You can convert strings to symbols and check their types:
+#+BEGIN_SRC scheme
+(string->symbol "Hello")  ; Convert string to symbol
+(string? "Hello")          ; Check if "Hello" is a string
+#+END_SRC
+
+*** String formatting
+#+begin_src scheme
+(format #t "~a idea ~a" "Bad" "Microsoft") ;;=> Bad idea Microsoft
+#+END_SRC
+
+#+BEGIN_SRC scheme
+(format #f "~a idea ~a" "Bad" "Microsoft") ;;=> "Bad idea Microsoft"
+#+END_SRC
+
+#+BEGIN_SRC scheme
+(format #t "~a idea ~a\n" "Bad" "Microsoft") ;;=> Bad idea Microsoft
+                                             ;;
+#+END_SRC
+
+#+BEGIN_SRC scheme
+(format #f "~a idea ~a\n" "Bad" "Microsoft") ;;=> Bad idea Microsoft\n
+#+end_src
+
+** Numbers and Arithmetic
+Scheme supports various arithmetic operations:
+#+BEGIN_SRC scheme
+7/3                          ; Division
+(/ 7 3.0)                   ; Division with a float
+(quotient 17 3)             ; Integer division
+(remainder 17 3)            ; Remainder
+#+END_SRC
+
+*** Complex Numbers
+You can also work with complex numbers:
+#+BEGIN_SRC scheme
+(number? 4+2i)              ; Check if it's a number
+(integer? 3.0)              ; Check if it's an integer
+(integer? (* 3 1/3))        ; Check if the result is an integer
+#+END_SRC
+
+*** Special Cases
+Some operations may yield unexpected results:
+#+BEGIN_SRC scheme
+(/ 10 2 5)                  ; Division of multiple numbers
+(sqrt -9)                   ; Square root of a negative number
+#+END_SRC
+
+** Lists
+#+begin_src scheme
+(define num-list '(1 2 3))
+(+ num-list) ;; (1 2 3)
+(apply + num-list) ;; 6
+#+end_src
+
+#+BEGIN_SRC scheme
+(define a-list (cdr (iota 4))) ;; '(1 2 3)
+(define b-list (list 1 2 3))
+(eq? a-list b-list) ;;=> #f ;; Are they the same? NO
+(equal? a-list b-list) ;;=> #t ;; Do they have the same value? YES
+#+END_SRC
+
+*** List Operations
+Accessing elements in lists:
+#+BEGIN_SRC scheme
+;; (elt 2 '(1 2 3)) ;; doesn't work in Scheme!
+(list-ref '(1 2 3) 0)
+#+END_SRC
+
+** Cons cells
+#+begin_src scheme
+(cons 3 '()) ;;=> (3)
+(cons 2 (cons 3 '())) ;;=> (2 3)
+(equal? (cons 2 (cons 3 '())) '(2 3)) ;;=> #t
+(cons 'a (cons 'b '())) ;;=> (a b)
+(cons 'a 'b) ;;=> (a . b)
+#+end_src
+
+* Comparisons and Equality
+Scheme provides different ways to compare values:
+- ~=~ checks if two numbers are equal.
+- ~eq?~ checks if two values refer to the same object (identity).
+- ~equal?~ checks for structural equivalence.
+
+Examples:
+#+BEGIN_SRC scheme
+(= 32 32.0)                 ; True, numeric equality
+(= 6 (* 2 3.0))             ; True, numeric equality
+(= 6 '6)                    ; False, different types
+;; (= 6 "6") will fail because = can't compare strings
+#+END_SRC
+
+** Lists and Equality
+You can compare lists for equality:
+#+BEGIN_SRC scheme
+(define l1 '(1 2 3 4))
+(define l2 '(1 2 3 4))
+(eq? l1 l2)                 ; False, different list objects
+(equal? l1 l2)              ; True, same structure and values
+ #+END_SRC
+
+** Symbols and Strings
+Comparing symbols and strings:
+#+BEGIN_SRC scheme
+(eq? 'Hello 'Hello)                          ; True, same symbol
+(eq? "CS" (symbol->string 'CS))              ; False, different types
+(equal? "CS" (symbol->string 'CS))           ; True, equivalent values
+#+END_SRC
+
+** String Comparisons
+You can compare strings directly:
+#+BEGIN_SRC scheme
+(string=? "Hello" (symbol->string 'Hello))  ; True
+(define hlo "Hello")
+(define hlos 'Hello)
+(string=? hlo (symbol->string hlos))         ; True
+#+END_SRC
+
+** List Comparisons
+Comparing lists for structural equality:
+#+BEGIN_SRC scheme
+(equal? '() (cdr '(1)))                       ; True, empty list vs. cdr of a list
+(equal? '(1 2 (3 (4 5) 6 7)) '(1 2 3 4 5 6 7)) ; False, different structures
+#+END_SRC
+
+* Functions and Lambdas
+** Defining Functions
+#+begin_src scheme
+(define (my-square x)
+  (* x x))
+(my-square 5)
+#+end_src
+
+*** Redefining functions
+#+begin_src scheme
+(define add +)
+(add 1 2)
+#+end_src
+
+*** Optional Parameters
+Defining functions with optional parameters:
+#+BEGIN_SRC scheme
+(define* (add a b #:optional (c 0))
+  (+ a b c))
+
+(display (add 2 3))
+(newline)
+(display (add 2 3 5))
+#+END_SRC
+
+** Using Lambdas
+You can define functions using ~lambda~:
+#+BEGIN_SRC scheme
+(define my-square (lambda (x) (* x x)))
+(my-square 5)
+#+END_SRC
+This is a /named lambda/. It does *not* make sense - why would you name a lambda if you can simply use a function?!
+
+You can also use lambdas directly:
+#+BEGIN_SRC scheme
+((lambda (x) (* x x)) 5)  ; Returns 25
+#+END_SRC
+
+** Example
+#+begin_src scheme
+(define (chatty-add name . nums)
+  (format #t "<~a> says: \"If you add em u get: \" ~a" name (apply + nums)))
+(chatty-add "Stig" 9 11)
+#+END_SRC
+
+#+BEGIN_SRC scheme
+(define (happy-on-string arg)
+  (if (string? arg)
+      (string-append "YES " arg " is a string")
+      "Not a string"))
+(happy-on-string 12)
+#+END_SRC
+
+#+BEGIN_SRC scheme
+(define (goldilocks a b c)
+  "Returns true if A is between B and C."
+  (if (< a b)
+      "Too small"
+      (if (> a c)
+          "Too big"
+          "Just right")))
+#+END_SRC
+This can be simplified using ~cond~:
+#+BEGIN_SRC scheme
+(define (goldilocks a b c)
+  (cond
+   ((< a b) "Too small")
+   ((> a c) "Too big")
+   (else "Just right")))
+
+(goldilocks 3 10 20)
+#+END_SRC
+
+*** Geometry
+Calculating the area of a triangle using Heron's formula:
+#+BEGIN_SRC scheme
+(define a 5.43)
+(define b 4.7)
+(define c 2.8)
+(define (area a b c)
+  (let ((s (/ (+ a b c) 2)))
+    (sqrt (* s (- s a) (- s b) (- s c)))))
+(area a b c)
+#+END_SRC
+
+* Using Modules
+You can use modules to extend functionality:
+#+BEGIN_SRC scheme
+(use-modules (ice-9 rdelim))
+(use-modules (ice-9 popen))
+(define p
+ (open-input-pipe "cd $HOME && ls -l"))
+(newline)
+#+END_SRC
+
+#+BEGIN_SRC scheme
+(use-modules (ice-9 match))
+(match '(1 2 3)
+  ((first rest ...)
+   (format #f "First: ~a Rest: ~a" first rest)))
+#+END_SRC
+
+** Associative Lists
+You can use associative lists for key-value pairs:
+#+BEGIN_SRC scheme
+(define noises
+  '( (cat . meow) (dog . bark) (sheep . baa) ))
+(assoc 'cat noises) ;;=> (cat . meow)
+(assoc 'monkey noises) ;;=> #f
+#+END_SRC
+
+** Expression Interpolation
+You can use backquote for expression interpolation:
+#+BEGIN_SRC scheme
+`(1 2 ,(+ 1 2))
+#+END_SRC
+
+** Creating Structured Data
+You can create structured data using lists:
+#+BEGIN_SRC scheme
+(define (car-entry sno bnd age)
+  `(car (number ,sno) (brand ,bnd) (age ,age)))
+(car-entry 1 "VW" 16)
+(car-entry 2 "BMW" 4)
+#+END_SRC
+
+* Encapsulation
+Creating a simple account management system:
+#+BEGIN_SRC scheme
+(define (make-account)
+  ;; Initialize balance to 0
+  (let ((balance 0))
+
+    (define (get-balance)
+      balance)
+    
+    (define (deposit amt)
+      (set! balance (+ balance amt))
+      balance)
+
+    (define (withdraw amt)
+      (deposit (- amt)))
+
+    ;; Main logic
+    (lambda args
+      (apply
+       ; in case the first arg is either get-balance, deposit or withdraw, handle accordingly. Keep the rest of the args unchanged.
+       (case (car args)
+         ((get-balance) get-balance)
+         ((deposit) deposit)
+         ((withdraw) withdraw)
+         (else (error "Invalid method!")))
+       (cdr args)))))
+
+;; Instantiate an object
+(define obj (make-account))
+
+(obj 'get-balance)
+(obj 'withdraw 5)
+(obj 'deposit 391)
+(obj 'get-balance)
+#+END_SRC
+
+* Structuring Data
+Creating a simple structure:
+#+BEGIN_SRC scheme
+(define (struct)
+  (let ((a 0) (b 0))
+
+    (define (new)
+      '(0 0))
+
+    (define (new a b)
+      '(a b))
+
+    (define (add a b)
+      (+ a b))
+    )
+  )
+
+(define obj (struct 'new))
+
+(obj 'add 3 4)
+#+END_SRC
+

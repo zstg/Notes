@@ -1,0 +1,25 @@
+#+title: Fediverse servers
+
+* Multi-service
+** Tchncs.de
+- procial.tchncs.de
+- social.tchncs.de
+- discuss.tchncs.de
+** infosec.exchange family
+- pixel.infosec.exchange
+- infosec.town
+- infosec.exchange
+** Programming.dev family
+- programming.dev
+- bytes.programming.dev
+
+
+** Misc
+*** Left
+- chaos.social
+- +kolektiva.social+
+*** General-purpose
+- evil.social (IceShrimp)
+- fireshark.social
+*** Tech/Linux/FOSS
+- social.linux.pizza

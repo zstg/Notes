@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       0291f985-f268-4151-9a71-39f0dd41e1bc
+:END:
+#+title: Embedded Systems
+[[id:a69663b3-66e7-4809-80a1-740e4319036f][Embedded systems project ideas]]
+[[id:1c077cad-093e-4921-a0cc-231a2d073dc0][Module 1 Introduction to Embedded Systems]]

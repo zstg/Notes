@@ -1,0 +1,274 @@
+:PROPERTIES:
+:ID:       eb6ce119-baf1-480a-80ed-5743ed13888d
+:END:
+#+title: Racket Tutorial
+#+LANGUAGE: en
+#+OPTIONS: toc:nil num:nil
+
+* Comments
+
+** Single line
+#+BEGIN_SRC racket
+;; Single line comments start with a semicolon
+#+END_SRC
+
+** Block (Nested)
+#+BEGIN_SRC racket
+#| Block comments
+   can span multiple lines and...
+    #|
+       they can be nested!
+    |#
+|#
+#+END_SRC
+
+** S-expression comments
+#+BEGIN_SRC racket
+#; (this expression is discarded)
+#+END_SRC
+
+* 1. Primitive Datatypes and Operators
+
+** Numbers
+#+BEGIN_SRC racket
+9999999999999999999999 ; integers
+#b111                  ; binary => 7
+#o111                  ; octal => 73
+#x111                  ; hexadecimal => 273
+3.14                   ; reals
+6.02e+23
+1/2                    ; rationals
+1+2i                   ; complex numbers
+#+END_SRC
+
+** Arithmetic
+#+BEGIN_SRC racket
+'(+ 1 2)
+(+ 1 1)
+(- 8 1)
+(* 10 2)
+(expt 2 3)
+(quotient 5 2)
+(remainder 5 2)
+(/ 35 5)
+(/ 1 3)
+(exact->inexact 1/3)
+(+ 1+2i  2-3i)
+#+END_SRC
+
+** Booleans
+#+BEGIN_SRC racket
+#t
+#f
+(not #t)
+(and 0 #f (error "doesn't get here"))
+(or #f 0 (error "doesn't get here"))
+#+END_SRC
+
+** Characters and Strings
+#+BEGIN_SRC racket
+#\A
+#\λ
+#\u03BB
+"Hello, world!"
+"Benjamin \"Bugsy\" Siegel"
+"Foo\tbar\41\x21\u0021\a\r\n"
+"λx:(μα.α→α).xx"
+(string-append "Hello " "world!")
+(string-ref "Apple" 0)
+(format "~a can be ~a" "strings" "formatted")
+(printf "I'm Racket. Nice to meet you!\n")
+#+END_SRC
+
+* 2. Variables
+
+#+BEGIN_SRC racket
+(define some-var 5)
+some-var
+
+(define ⊆ subset?)
+(⊆ (set 3 2) (set 1 2 3))
+
+(let ([me "Bob"])
+  "Alice"
+  me)
+
+(let* ([x 1]
+       [y (+ x 1)])
+  (* x y))
+
+(letrec ([is-even? (lambda (n)
+                     (or (zero? n)
+                         (is-odd? (sub1 n))))]
+         [is-odd? (lambda (n)
+                    (and (not (zero? n))
+                         (is-even? (sub1 n))))])
+  (is-odd? 11))
+#+END_SRC
+
+* 3. Structs and Collections
+
+** Structs
+#+BEGIN_SRC racket
+(struct dog (name breed age))
+(define my-pet (dog "lassie" "collie" 5))
+(dog? my-pet)
+(dog-name my-pet)
+
+(struct rgba-color (red green blue alpha) #:mutable)
+(define burgundy (rgba-color 144 0 32 1.0))
+(set-rgba-color-green! burgundy 10)
+(rgba-color-green burgundy)
+#+END_SRC
+
+** Pairs and Lists
+#+BEGIN_SRC racket
+(cons 1 2)
+(car (cons 1 2))
+(cdr (cons 1 2))
+
+(cons 1 (cons 2 (cons 3 null)))
+(list 1 2 3)
+'(1 2 3)
+`(1 ,(+ 1 1) 3)
+
+(car '(1 2 3))
+(cdr '(1 2 3))
+(cadr (list 1 2 3))
+(cddr (list 1 2 3))
+(caddr (list 1 2 3))
+(cons 4 '(1 2 3))
+(append '(1 2) '(3 4))
+
+(map add1 '(1 2 3))
+(map + '(1 2 3) '(10 20 30))
+(filter even? '(1 2 3 4))
+(count even? '(1 2 3 4))
+(take '(1 2 3 4) 2)
+(drop '(1 2 3 4) 2)
+#+END_SRC
+
+** Vectors
+#+BEGIN_SRC racket
+#(1 2 3)
+(vector-append #(1 2 3) #(4 5 6))
+#+END_SRC
+
+** Sets
+#+BEGIN_SRC racket
+(list->set '(1 2 3 1 2 3 3 2 1 3 2 1))
+(set-add (set 1 2 3) 4)
+(set-remove (set 1 2 3) 1)
+(set-member? (set 1 2 3) 1)
+(set-member? (set 1 2 3) 4)
+#+END_SRC
+
+** Hashes
+#+BEGIN_SRC racket
+(define m (hash 'a 1 'b 2 'c 3))
+(hash-ref m 'a)
+(hash-ref m 'd 0)
+(define m2 (hash-set m 'd 4))
+(hash-remove m 'a)
+#+END_SRC
+
+* 4. Functions
+
+** Lambda and Definitions
+#+BEGIN_SRC racket
+(lambda () "Hello World")
+((lambda () "Hello World"))
+(define hello-world (lambda () "Hello World"))
+(hello-world)
+(define (hello name) (string-append "Hello " name))
+(hello "Steve")
+(define (hello4 [name "World"]) (string-append "Hello " name))
+#+END_SRC
+
+** Variadic and Keyword Arguments
+#+BEGIN_SRC racket
+(define (count-args . args)
+  (format "You passed ~a args: ~a" (length args) args))
+
+(define (hello-k #:name [name "World"] #:greeting [g "Hello"] . args)
+  (format "~a ~a, ~a extra args" g name (length args)))
+#+END_SRC
+
+* 5. Equality
+
+#+BEGIN_SRC racket
+(= 3 3.0)
+(eq? '() '())
+(eq? (list 3) (list 3))
+(eqv? (expt 2 100) (expt 2 100))
+(equal? (list 3) (list 3))
+#+END_SRC
+
+* 6. Control Flow
+
+** Conditionals
+#+BEGIN_SRC racket
+(if #t "this is true" "this is false")
+(cond [(> 2 2) (error "wrong!")]
+      [(< 2 2) (error "wrong again!")]
+      [else 'ok])
+#+END_SRC
+
+** Pattern Matching
+#+BEGIN_SRC racket
+(define (fizzbuzz? n)
+  (match (list (remainder n 3) (remainder n 5))
+    [(list 0 0) 'fizzbuzz]
+    [(list 0 _) 'fizz]
+    [(list _ 0) 'buzz]
+    [_          #f]))
+#+END_SRC
+
+** Loops
+#+BEGIN_SRC racket
+(define (loop i)
+  (when (< i 10)
+    (printf "i=~a\n" i)
+    (loop (add1 i))))
+
+(let loop ([i 0])
+  (when (< i 10)
+    (printf "i=~a\n" i)
+    (loop (add1 i))))
+
+(for ([i (in-range 5 10)])
+  (printf "i=~a\n" i))
+#+END_SRC
+
+** Iteration
+#+BEGIN_SRC racket
+(for ([i (in-list '(l i s t))]) (displayln i))
+(for ([i (in-vector #(v e c t o r))]) (displayln i))
+(for ([i (in-string "string")]) (displayln i))
+(for ([i (in-set (set 'x 'y 'z))]) (displayln i))
+(for ([(k v) (in-hash (hash 'a 1 'b 2 'c 3))])
+  (printf "key:~a value:~a\n" k v))
+#+END_SRC
+
+** Comprehensions
+#+BEGIN_SRC racket
+(for/list ([i '(1 2 3)]) (add1 i))
+(for/list ([i 10] [j '(x y z)]) (list i j))
+(for/and ([i 10] [j (in-range 10 20)]) (< i j))
+(for/fold ([sum 0]) ([i '(1 2 3 4)]) (+ sum i))
+#+END_SRC
+
+* 7. Mutation
+
+#+BEGIN_SRC racket
+(define n 5)
+(set! n (add1 n))
+
+(define n* (box 5))
+(set-box! n* (add1 (unbox n*)))
+(unbox n*)
+
+(define vec (vector 2 2 3 4))
+(vector-set! vec 0 1)
+vec
+#+END_SRC

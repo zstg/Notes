@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       c0d67b3b-9a50-4808-ae0f-b3a554d1ca38
+:END:
+#+title: Microeconomics
+
+[[id:81cf7439-4b43-4179-b25a-b8a23bc5769c][Module 1 Microeconomics Principles]]
+Reading materials
+- N Greg Mankiw "Principles of μeco", South-western Cengage learning  (*pref*)
+- Dwivedi, DN 2019 Managerial Economics, Vikas Publishing House
+
+[[id:7cd92370-f0bc-406b-b912-c888df348485][Microeconomics Module 2 Consumer Behaviour]]  

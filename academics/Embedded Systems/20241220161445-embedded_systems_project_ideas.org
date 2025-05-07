@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       a69663b3-66e7-4809-80a1-740e4319036f
+:END:
+#+TITLE: Embedded systems project ideas
+- RTOS (for Drones)
+- +strip and build Linux kernel with realtime capabilities+ 
+- +use Arduino to run *multiple* infinite loops. Print case statements to be executed inside the loop...+
+- FreeRTOS
+
+- Target: ~aarch64-unknown-linux-gnu~
+
+ [[attachment:clipboard-20250105T174448.png]] 
+
+* Resources
+- https://os.phil-opp.com
+- https://github.com/drone-os
+- https://youtu.be/QlzoegSuIzg
+- https://www.instructables.com/FreeRTOS-01-Setting-Up-FreeRTOS-on-Arduino/
+- https://microcontrollerslab.com/use-freertos-arduino/
+- https://www.youtube.com/watch?v=QlzoegSuIzg
+- https://github.com/rust-embedded/rust-raspberrypi-OS-tutorials
+- https://www.youtube.com/watch?v=jZT8APrzvc4
+- https://cs140e.sergio.bz/docs/BCM2837-ARM-Peripherals.pdf
+- https://microcontrollerslab.com/use-freertos-arduino/
+- https://www.youtube.com/watch?v=FkrpUaGThTQ
+- https://www.youtube.com/watch?v=rH5jnbJ3tL4
+
+ 

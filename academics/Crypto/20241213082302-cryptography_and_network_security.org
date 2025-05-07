@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       45e30bc4-ffb9-4b07-a8f2-e84c4d73b476
+:END:
+#+title: Cryptography and Network Security
+
+#+begin_verse
+William Stallings, 8th Ed.
+#+end_verse
+[[id:6a4f65c4-b53e-47e0-8a0d-e24733e7ae1f][CNS Theory]]
+[[id:a9a2a26b-70ab-4e07-a6b4-5d22d06b169c][CNS Lab]]

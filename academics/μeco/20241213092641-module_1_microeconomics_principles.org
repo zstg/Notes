@@ -1,0 +1,159 @@
+:PROPERTIES:
+:ID:       81cf7439-4b43-4179-b25a-b8a23bc5769c
+:END:
+#+title: Microeconomics Module 1 Microeconomics Principles
+
+* What is Microeconomics?
+#+BEGIN_VERSE
+Economics is the study of mankind in the ordinary business of life.
+                                            ~ Alfred Marshall, 1890
+#+END_VERSE
+
+#+BEGIN_VERSE
+The science which studies human behaviour as a relationship b/n ends
+and /scarce/ means which have /alternative/ uses.
+#+END_VERSE
+We consider /all/ poss scarce resources - usually even time!
+
+- Deals with small-scale economics as _micro-units_
+- "Form" -> micro aspect
+- Look in terms of products produced by _firms_.
+
+*Theory of demand*:
+
+/When a price of a commodity increases the demand decreases (and vice-versa)./
+
+* Factors affecting the market
+- competition price
+- count and quality of produced goods
+- general market organisation
+* Agents
+** Producers
+- *Industries*     (drugs          , automotives)
+- *Firms* (μ-unit) (Proctor-Gamble , firm)
+- plan for the expected customer demands and change production accordingly (Ex: winter clothing gets /replaced/ with cotton clothes during the warmer months...)
+- They need to ensure that customer needs get fulfilled _on time_. They can ensure equilibrium in a number of ways; they can, for instance, choose to use soap raw materials for making hand sanitizers...
+- Prod-cons interaction occurs in the marketplace
+- Note that producers can /also/ produce services, not justt goods (Ex: gen AI)
+** Consumers
+- individuals/households
+** Government
+- regulates consumers and producers relation (i.e taxations, tariffs etc)
+- incentivizes producers to produce healthily for consumers
+
+* Monopoly
+~Perfectly competitive~ → multiple stalls sell at same price. Same items at same price. Customers have _no_ influence on deciding the price
+~Monopoly~ → If you're the only one selling <said commodity> in the market, you can increase the price as you wish because _you're the only one selling said product_.
+_Monopolistic competition_ (or _Competitive monopoly_?) is a mix of the two.
+
+* Market failure
+#+begin_verse
+Is it a good idea for the govt to regulate the market?
+#+end_verse
+
+Answer: *No*. /Mostly/.
+
+If there's a boom in the real estate sector, the prices may go up. Beyond a certain price the rise would start becoming unreasonable, and hence the market will automatically self-regulate to bring down the price.
+
+Big firms could, however, gain huge power over the market. Say a certain company earns /supernormal/ profit because of COVID, but mass deaths occur. The govt interferes and fixes a cap on the price. *Unjust gain over the market leads to market failure*.
+
+#+begin_example
+Pollution.
+#+end_example
+Say the toxic waste of an industry get thrown into rivers. Fishing industry takes a hit. The govt places /fines/taxes/ on the polluters, and the price increases, demand decreases.
+
+* TODO Tradeoffs
+** Choices
+*** Personal
+*** Business
+*** Collective
+
+- scarcity
+  Scarcity leads to choices which in turn lead to choices and tradeoffs. The basic subject matter of economics comes from here.
+
+** Workers
+** Consumers
+<insert pic - choosing top 2 choices...>
+** Final choice
+** Opportunity cost
+- What you give up by choosing said reward.
+- The /best/ alternative that we *give up/forego* when we make a choice.
+- "I'd rather have <opp. cost>"
+- "I'd tweak Emacs rather than study MicroEconomics". Since I have μeco test tomo I give up on (the (alt) choice of) tweaking Emacs. I've given up on the /opportunity cost/ of tweaking Emacs. If I think about a compromise / *balance* between the 2, I do *Thinking at the margin* aka _Marginal Analysis_.
+* How people make decisions
+** Rational people think at the /margins/
+- Rational ppl compare the /additional/ _benefits_ of a choice with the /additional/ _costs_.
+- "_How_ much of B shd I take as compared to A?" It's not just A vs B, it's /also/ about quantity...
+- make marginal changes. Make _small incremental_ changes to an existing plan. "I'm already lifting 10kg. Lemme see if I can add 1 more..." "How much more/less of <certain thing> should I do?"
+- 
+
+** People respond to _incentives_
+- A higher grade incentivizes you to prep better
+- An incentive induces a person to act in a certain way. Govts can change the behaviour of individuals using incentives
+#+BEGIN_EXAMPLE
+It imposes tax on "sin goods" such as tobacco, alcohol, drugs etc.
+#+END_EXAMPLE
+
+- Discounts
+- We choose prod with higher quality
+- In general, we tend to obey the rules to _avoid punishment_ (yes, this is an incentive too!)
+- Ex: Governments incentivise industries to not pollute (by say imposing taxes or fines) - thus the company _may_ introduce some filters etc (they modify their behaviour)
+- Because incentives change cust tradeoffs (say a sudden price drop makes u re-eval ur decisions), they change people behaviour.
+
+* How the economy as a whole works
+** Standard of living
+- A country's std of living depends on its ability to prod goods and services
+- More skilled manpower, better the economy, better ability to prod G&S, higher std of living
+- Ensure that import value ≤ export value (i.e no ~trade deficit~). No country can survive only on imports or exports
+- std of living is dir prop to GDP,PCI
+- Higher std of living also means (indirectly) lesser population (poorer citizens may produce more kids in case some :skull:
+- Other standards of living: birth/death rate
+- Productivity increases if same quantity of goods produces more output
+  
+#+BEGIN_DEFINITION
+The qty of goods and services produced from each unit of labour input
+#+END_DEFINITION
+
+** Demographic advantage
+- India has a /demographic advantage/ - meaning we have a young and capable workforce; it's just that Indians don't _tap_ into this.
+
+* The economist as a scientist
+- Analytical, objective thinking
+- Observation/correlation from scientific data, surveys etc
+** Scientific methods used
+- Observation, theory, repeat
+
+Law of demand
+#+BEGIN_COMMENT
+There's a usually direct (sometimes inverse) relation b/n demand and price
+#+END_COMMENT
+
+- Abstract models explain how the complex real world operates. These (usually) simplified models utilize certain assumptions...
+
+  The *Great Depression* (and the subsequent stock market crash in the '20s) created /hyperinflation/ and /market glut/ (i.e unsold goods). This watershed moment led to /... Economics/ and /business cycles/. The short slowdown (late 1920s-early 1930s) took a long time to recover because industries had no know-how. Johns Atkins <??> encouraged/urged the goverment to _stimulate demand_. This info was useful in the _housing market crash (USA, ≈2008)_.
+
+
+#+BEGIN_COMMENT
+A bit of inflation means no stagnation, a bit of growth. Inflation usually spurs up growth.
+#+END_COMMENT
+
+This is not entirely true, "stagflation" occurred during the Gulf Oil crisis - increased production/manufacturing costs. Increase in manufacturing cost did *not* boost/create demand.
+
+
+- Theories are developed, data is collected and analyzed in order to evaluate theories.
+
+*** Models
+- Simplify reality in order to improve our understanding of the world.
+- Models/theories are _frameworks_ used to organize how we think about a problem.
+
+#+BEGIN_EXAMPLE
+Say we assume our economy is a closed economy.
+#+END_EXAMPLE
+
+:TODO:
+~Ceteris paribus~ → "Other things equal"
+~Homo economicus~ → "Economics man". Assume that a rational individual decreases consumption during price hikes/worse economy etc...
+  
+* Role of an economist
+- predict recessions, and the economy in general
+- govt policy advisors (analyze policies in a particular dept and help govts regulate the policies)

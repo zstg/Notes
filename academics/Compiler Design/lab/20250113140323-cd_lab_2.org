@@ -1,0 +1,76 @@
+:PROPERTIES:
+:ID:       73a93a10-57ba-438c-98b2-8ac3afaa14e7
+:END:
+#+title: CD Lab 2 Advanced Lex usage
+
+* Question
+
+* Solution
+1. Create =qn.l= with the following:
+#+BEGIN_SRC C
+%{
+int COMMENT = 0;
+%}
+
+delim   [ \t\n]
+ws      {delim}+
+digit   [0-9]
+lower   [a-z]
+upper   [A-Z]
+chr    [a-zA-Z]
+number  {digit}+(\.{digit}+)?
+letter  [{lower}{upper}]
+alphanum [{letter}{number}]
+string  {alphanum}+
+identifier  {chr}[{chr}{number}]*
+%%
+
+{ws}    /* Do nothing; ignore whitespaces */
+#.*     {printf("%s is a preproc directive\n", yytext);}
+int |
+float |
+main |
+else |
+if |
+printf |
+scanf |
+char |
+getchar |
+for |
+while {printf("%s is a keyword", yytext);}
+\<.*\.h\> {printf("%s is a header\n", yytext);}
+"/*" {COMMENT = 1;} /* Start of comment */
+"*/" {COMMENT = 0;} /* End of comment */
+{identifier}(\[[0-9]*\])? {if (!COMMENT) printf("%s is an identifier\n", yytext);}
+\{ {if (!COMMENT) printf("Block begin\n");}
+\} {if (!COMMENT) printf("Block end\n");}
+\".*\" {if (!COMMENT) printf("%s is a string\n", yytext);}
+\'{chr}\' {if (!COMMENT) printf("%s is a char\n", yytext);}
+{number} {if (!COMMENT) printf("%s is a numeric constant\n", yytext);}
+\+ | 
+\- |
+\* |
+\/ |
+\% {if (!COMMENT) printf("%s is an arithmetic operator\n", yytext);}
+= {if (!COMMENT) printf("%s is the assignment operator\n", yytext);}
+\<= |
+\>= |
+\< |
+\> |
+\!= |
+== {if (!COMMENT) printf("%s is a relational operator\n", yytext);}
+%%
+int yywrap() { return 1; }
+
+int main(int argc, char **argv) {
+    if (argc > 1) {
+        FILE *f1;
+        f1 = fopen(argv[1],"r");
+        if (f1) {
+            yyin = f1;
+        }
+    }
+    yylex();
+    return 0;
+}
+#+END_SRC

@@ -1,0 +1,630 @@
+:PROPERTIES:
+:ID:       acf079dd-ce4a-49d2-8a44-005147d72555
+:END:
+#+title: Emacs Lisp tutorial
+#+startup: content
+
+* Quoting
+Quoting an expression tells the interpreter to _not evaluate_ an s-expression. 
+This is useful when you want to assign variables:
+#+begin_src emacs-lisp :results verbatim
+(setq l '(+ 300 (- 12 1)))  ;; l is assigned the quoted expression
+;; l = '(300 + (12 - 1))
+l
+#+end_src
+
+Without quoting, it would evaluate the expression:
+#+begin_src emacs-lisp
+(set 'l (+ 300 (- 12 1)))  ;; l is assigned the evaluated result
+l
+#+end_src
+
+* Type of an Expression
+You can check the type of an expression using =type-of=.
+#+begin_src emacs-lisp
+(type-of 1234)  ;; returns 'integer'
+#+end_src
+
+* Fundamentals
+** Datatypes
+*** Primitive Datatypes
+**** Integers
+Examples of integers:
+#+begin_src emacs-lisp
+1
+-1
+0
+#+end_src
+
+**** Floats
+Examples of floats:
+#+begin_src emacs-lisp
+-3.14159
+1.
+-2  ;; actually an int...
+#+end_src
+
+**** Characters
+Characters are interpreted as integers.
+#+begin_quote
+Characters are really integers that are interpreted as characters.
+#+end_quote
+
+Examples of character usage:
+#+begin_src emacs-lisp
+?A  ;; 65
+?a  ;; 97
+?\n ;; returns 10, the ASCII code for the newline character
+?\t ;; 9
+#+end_src
+
+Keybinds as characters:
+#+begin_src emacs-lisp
+?\C-c
+(kbd "C-c")
+?\M-x
+(kbd "M-x")
+#+end_src
+
+**** Sequences
+Lists, arrays, and vectors are sequences.
+
+***** Length
+Obtain the length of any sequence using the =length= function:
+#+begin_src emacs-lisp
+(length "Hello!") ;; 6
+(length "冰淇淋") ;; 3
+(length '(1 2))   ;; 2
+(length [5 4 3 2]) ;; 4
+(length nil)      ;; 0
+#+end_src
+
+***** Element at Index
+Access elements in sequences using =elt=:
+#+begin_src emacs-lisp
+(elt "Hello" 1)  ;; returns "e"
+(elt "Hello" -1) ;; returns "o"
+(elt '(3 2 1) 2)  ;; returns 1 
+(elt '(3 2 1) -2) ;; returns 3
+(elt '(3 2 1) 3)  ;; out of range, returns nil
+(elt '(3 2 1) -6666666666) ;; still returns 3
+#+end_src
+
+Note that vectors are *not* zero-based sequences, and so =elt= will /not/ work as expected:
+#+begin_src emacs-lisp
+(elt [1 2 3 4] 2) ;; returns 3
+(elt [1 2 3 4] -1) ;; out of range, returns error
+#+end_src
+
+***** =apply=
+If you have a list of values that you want to pass to a function, you can use =apply=. It works similar to Rust's =all= method.
+#+begin_src emacs-lisp
+(apply '+ '(2 2))
+(funcall '+ 2 2)
+
+;; works even with `&optional' and `&rest' parameters
+(apply 'multiply-many '(1 2 3 4 5))
+(apply 'multiply-two-or-many '(1 2 3 4 5))
+#+end_src
+
+***** Simple Lists
+Lists are fundamental data structures in Emacs Lisp.
+Example of creating a simple list:
+#+begin_src emacs-lisp :results verbatim
+(list 1 2 3
+      4 5 6
+      7 8 9)
+#+end_src
+
+**** Strings
+Strings are also sequences:
+#+begin_src emacs-lisp
+"Hello!"
+"Hello \
+System Crafters!"
+"Hello \n System Crafters!"
+(make-string 5 ?!) ;; creates a string of 5 '!'
+(string ?H ?e ?l ?l ?o) ;; creates "Hello"
+#+end_src
+
+**** Lists
+Lists are possibly the most useful data type in Emacs Lisp.
+***** Cons Cells
+Lists are built from "cons cells", which allow chaining of list elements.
+  - =car= retrieves the first value.
+  - =cdr= retrieves the rest of the list.
+    #+begin_src emacs-lisp
+    (cons 1 2)  ;; returns '(1 . 2)
+    (car '(1 . 2))  ;; returns 1
+    (cdr '(1 . 2))  ;; returns 2
+    #+end_src
+
+***** Building Lists from Cons
+Two ways to build a list:
+#+begin_src emacs-lisp
+(cons 1 (cons 2 (cons 3 (cons 4 nil))))  ;; returns '(1 2 3 4)
+(append '(1 2 3) '(4))                    ;; returns '(1 2 3 4)
+#+end_src
+
+***** Alists
+Association lists (alists) store named values:
+#+begin_src emacs-lisp
+(setq some-alist '((one . 1) (two . 2) (three . 3)))
+(alist-get 'one some-alist)  ;; returns 1
+#+end_src
+
+***** Plists
+Property lists (plists) are another way to do key/value pairs:
+#+begin_src emacs-lisp
+(plist-get '(one 1 two 2) 'one)  ;; returns 1
+(plist-put '(one 1 two 2) 'three 3)  ;; returns '(one 1 two 2 three 3)
+#+end_src
+
+***** =car= and =cdr=
+The =car= function retrieves the first element of a list, while =cdr= retrieves the rest of the list.
+#+begin_src emacs-lisp
+(car '(1 2 3))  ;; returns 1
+#+end_src
+
+Nested usage of =car=:
+#+begin_src emacs-lisp
+(car (car '(1 2 3)))  ;; returns 1
+#+end_src
+
+***** Arrays
+Arrays are contiguous sequences of values, accessed quickly.
+#+begin_src emacs-lisp
+(setq some-array [1 2 3 4])
+(aset some-array 1 5)  ;; modifies the second element
+some-array               ;; returns [1 5 3 4]
+
+(setq some-string "Hello!")
+(aset some-string 0 ?M) ;; modifies the first character
+some-string              ;; returns "Mello!"
+#+end_src
+
+We can set all values in an array using =fillarray=:
+#+begin_src emacs-lisp
+(setq some-array [1 2 3])
+(fillarray some-array 6) ;; sets all elements to 6
+some-array                ;; returns [6 6 6]
+#+end_src
+
+***** =mapcar=
+#+begin_src emacs-lisp
+(defconst PI 3.141592)
+(defun circumf (rad)
+     (* 2 PI rad))
+(mapcar 'circumf '(5 10 15 20))
+;; (mapcar 'circumf (list 5 10 15 20)) ;; also works
+#+end_src
+
+*** Symbols
+- =t= → True
+- =nil= → False
+#+begin_src emacs-lisp :results verbatim
+(type-of t)  ;; returns 'symbol'
+#+end_src
+
+#+begin_src emacs-lisp
+(type-of nil) ;; returns 'nil'
+#+end_src
+
+** Variables
+*** Defining variables
+Setting global variables is easy, but what if you want to document the purpose of a variable?
+
+This is what =defvar= is for.  It basically allows you to create a variable binding and assign a documentation string to it:
+#+begin_src emacs-lisp
+
+  (setq am-i-documented "no")
+
+  (defvar am-i-documented "yes"
+    "I will relieve my own concern by documenting myself")
+
+#+end_src
+
+Why didn't =am-i-documented= show up as "yes"?  =defvar= only applies the default value if the binding doesn't already exist!
+
+This is actually useful: packages can define their variables with =defvar= and you can set values for them *before* the package gets loaded!  Your settings will not be overridden by the default value.
+
+If you want the default value to be immediately applied while writing your code, use =eval-defun= (~C-M-x~)
+
+In the end, you would use =defvar= when you want to define and document a variable in your configuration or in a package.  In most other cases, plain =setq= is sufficient.
+
+[[info:elisp#Defining Variables][Emacs Lisp Manual: Defining Variables]]
+
+*** Buffer-local variables
+You can set the value of a variable for the current buffer only using =setq-local=.  Any code that runs in that buffer will receive the buffer-local value instead of the global value!
+
+This is the first example where we see how the value of a variable can be different depending on where it is accessed.
+
+#+begin_src emacs-lisp
+
+  (setq-local tab-width 4)
+
+#+end_src
+
+Why do this?  There are many settings that should only be set per buffer, like editor settings for different programming languages and customization variables for major modes.
+
+If the variable isn't already buffer-local, =setq-local= will make it so, but only for the current buffer!
+
+#+begin_src emacs-lisp
+
+  ;; some-value doesn't exist yet!
+  (setq some-value 2)
+
+  ;; Make it buffer-local
+  (setq-local some-value 4)
+
+  ;; Using setq now will only set the buffer-local binding!
+  (setq some-value 5)
+
+  ;; A variable may only exist in a particular buffer!
+  (setq-local only-buffer-local "maybe?")
+
+#+end_src
+
+[[info:elisp#Buffer-Local Variables][Emacs Lisp Manual: Buffer-Local Variables]]
+
+*** Making a variable local for all buffers
+You can make any variable local for all future buffers with the =make-variable-buffer-local= function:
+#+begin_src emacs-lisp
+(setq not-local-yet t)
+(make-variable-buffer-local 'not-local-yet)
+#+end_src
+
+If you are writing an Emacs Lisp package and want to provide a buffer-local variable, this is the way to do it!
+#+begin_src emacs-lisp
+;; Defining a variable with defvar and then making it buffer local
+(defvar new-buffer-local-var 311)
+(make-variable-buffer-local 'new-buffer-local-var)
+#+end_src
+
+*** Setting default values
+You might also want to set the default value for a buffer-local variable with =setq-default=:
+
+#+begin_src emacs-lisp
+(setq-default not-local-yet nil)
+(setq-default tab-width 2
+              evil-shift-width 2)
+;; BEWARE!  Unexpected results using buffer-local variables:
+(setq-default evil-shift-width tab-width)
+
+;; This will create a variable that doesn't exist
+(setq-default will-i-be-created t)
+#+end_src
+Keep in mind that =setq-default= *does not* set the value in the current buffer, only future buffers!
+
+*** Defining variable scopes
+**** What is a "scope"?
+It's a region of your code where a variable is bound to a particular value (or not).
+More specifically, the value of =x= can be different depending on where in your code you try to access it!
+There are two different models for variable scope in Emacs Lisp, we will discuss this later.
+**** Global scope
+So far, we've been using variables that are defined in the "global" scope, meaning that they are visible to any other code loaded in Emacs.  A buffer-local variable can be thought of as a global variable for a particular buffer.
+
+Global variables are great for two things:
+- Storing configuration values that are used by modes and commands
+- Storing information that needs to be accessed by future invocations of a piece of code
+
+**** Defining a local scope with =let=
+Sometimes you just need to define a variable temporarily without "polluting" the global scope.  For example:
+#+begin_src emacs-lisp
+(setq x 0)
+
+(defun do-the-loop ()
+  (interactive)
+  (message "Starting the loop from %d" x)
+  (while (< x 5)
+    (message "Loop index: %d" x)
+    (incf x))
+  (message "Done!"))
+
+(do-the-loop)
+#+end_src
+
+But what if we run the function again?
+
+We can use =let= to define =x= inside of =do-the-loop=:
+
+#+begin_src emacs-lisp
+
+  (defun do-the-loop ()
+    (interactive)
+    (let ((x 0))
+      (message "Starting the loop from %d" x)
+      (while (< x 5)
+        (message "Loop index: %d" x)
+        (incf x))
+      (message "Done!")))
+
+  (do-the-loop)
+
+#+end_src
+
+=x= is bound inside of the scope contained within the =let= expression!
+
+However, what happened to the =x= that we defined globally?
+
+#+begin_src emacs-lisp
+
+  (defun do-the-loop ()
+    (interactive)
+    (message "The global value of x is %d" x)
+    (let ((x 0))
+      (message "Starting the loop from %d" x)
+      (while (< x 5)
+        (message "Loop index: %d" x)
+        (incf x))
+      (message "Done!")))
+
+#+end_src
+
+The =x= defined in the =let= overrides the global =x=!  Now when you set the value of =x=, you are only setting the value of the local =x= binding.
+
+*NOTE*: In the examples above, I am using =let= inside of a function definition, but it can be used anywhere!  We'll see this in the next section.
+
+[[info:elisp#Variable Scoping][Emacs Lisp Manual: Variable Scoping]]
+
+**** Defining multiple bindings with =let= and =let*=
+Once you start writing code that isn't so trivial, you'll find that you need to initialize a few temporary variables in a function to precalculate some results before running the real function body.
+
+The =let= expression enables you to bind multiple variables in the local scope:
+#+begin_src emacs-lisp
+(let ((y 5)
+      (z 10))
+  (* y z))
+#+end_src
+
+However, what if you want to refer to =y= in the expression that gets assigned to =z=?
+#+begin_src emacs-lisp
+(let ((y 5)
+      (z (+ y 5)))
+  (* y z))
+#+end_src
+
+=let*= allows you to use previous variables you've bound in subsequent binding expressions:
+#+begin_src emacs-lisp
+(let* ((y 5)
+       (z (+ y 5)))
+  (* y z))
+#+end_src
+
+The difference between =let= and =let*= is that =let*= actually expands to something more like this:
+#+begin_src emacs-lisp
+(let ((y 5))
+  (let ((z (+ y 5)))
+    (* y z)))
+#+end_src
+
+Side note: there are a couple of useful macros called =if-let= and =when-let=...
+
+**** Understanding "dynamic" scope
+Emacs Lisp uses something called "dynamic scope" by default.  This means that the value that is associated with a variable may change depending on where an expression gets evaluated.
+
+It's easier to understand this by looking at an example:
+#+begin_src emacs-lisp
+(setq x 5)
+
+;; x is considered a "free" variable
+(defun do-some-math (y)
+  (+ x y))
+
+(do-some-math 10)     ;; 15
+
+(let ((x 15))
+  (do-some-math 10))  ;; 25
+
+(do-some-math 10)
+#+end_src
+
+The value of =x= is resolved from a different scope based on where =do-some-math= gets executed!
+This can actually be useful for customizing the behavior for functions from other packages.  We've seen this before!
+#+begin_src emacs-lisp
+(defun dotfiles-tangle-org-file (&optional org-file)
+  "Tangles a single .org file relative to the path in
+dotfiles-folder.  If no file is specified, tangle the current
+file if it is an org-mode buffer inside of dotfiles-folder."
+  (interactive)
+  ;; Suppress prompts and messages
+  (let ((org-confirm-babel-evaluate nil)
+        (message-log-max nil)
+        (inhibit-message t))
+    (org-babel-tangle-file (expand-file-name org-file dotfiles-folder))))
+#+end_src
+
+We didn't actually change the global value of any of these variables!
+The other scoping model in Emacs is called "lexical scoping".  We will cover this and contrast the differences with dynamic scoping in another video.
+
+[[info:elisp#Variable Scoping][Emacs Lisp Manual: Variable Scoping]]
+
+*** Defining customization variables
+Customizable variables are used to define user-facing settings for customizing the behavior of Emacs and packages.
+The primary difference between They show up in the customization UI (users can set them without code)
+
+*** Using =defcustom=
+The =defcustom= function allows you to define a customizable variable:
+#+begin_src emacs-lisp
+(defcustom my-custom-variable 42
+  "A variable that you can customize")
+#+end_src
+
+=defcustom= takes some additional parameters after the documentation string:
+
+- =:type= - The expected value type
+- =:group= - The symbol that identifies the "group" this variable belongs to (defined with =defgroup=)
+- =:options= - The list of possible values this variable can hold
+- =:set= - A function that will be invoked when this variable is customized
+- =:get= - A function that will be invoked when this variable is resolved
+- =:initialize= - A function to be used to initialize the variable when it gets defined
+- =:local= - When =t=, automatically marks the variable as buffer-local
+
+There are a few more properties that I didn't mention but you can find them in the manual:
+
+[[info:elisp#Variable Definitions][Emacs Lisp Manual: Defining Customization Variables]]
+[[info:elisp#Group Definitions ][Emacs Lisp Manual: Defining Customization Groups]]
+
+*** Setting customizable variables (correctly)
+Some variables are defined to be customized and could have behavior that executes when they are changed.
+The important thing to know is that =setq= does not trigger this behavior!
+Use =customize-set-variable= to set these variables correctly in code:
+
+#+begin_src emacs-lisp
+(customize-set-variable 'tab-width 2)
+(customize-set-variable 'org-directory "~/Notes)
+#+end_src
+
+If you're using =use-package= (which I recommend), you can use the =:custom= section:
+#+begin_src emacs-lisp
+(use-package emacs
+  :custom
+  (tab-width 2))
+#+end_src
+
+*** How do I know that a variable is customizable?
+The easiest way is to use =describe-variable= (bound to ~C-h v~) to check the documentation.  If the variable is customizable it should say:
+#+begin_src sh
+"You can customize this variable"
+#+end_src
+
+*NOTE:* The [[https://github.com/Wilfred/helpful][Helpful]] package gives a lot more useful information!
+
+You can also use =custom-variable-p= on the variable's symbol (eval with ~M-:~)
+#+begin_src emacs-lisp
+(custom-variable-p 'tab-width)
+(custom-variable-p 'org-directory)
+(custom-variable-p 'org--file-cache)
+#+end_src
+
+** Predicates
+*** =listp=
+Check if something is a list:
+#+begin_src emacs-lisp
+(listp '(1 2 3))  ;; returns t
+(listp 1)         ;; returns nil
+#+end_src
+
+*** =sequencep=
+Check if something is a sequence. Note that =lists=, =arrays= and =vectors= are sequences. Weirdly enough, =nil= is also a sequence!
+#+begin_src emacs-lisp
+(sequencep "Sequence?") ;; t
+(sequencep "") ;; t
+(sequencep '(1 2 3)) ;; t
+(sequencep '()) ;; t
+(sequencep [1 2 3]) ;; t
+(sequencep []) ;; t
+(sequencep 22) ;; nil
+(sequencep ?A) ;; nil
+(sequencep nil) ;; t
+#+end_src
+
+*** =stringp=
+The =stringp= function returns =t= if the argument is a string.
+#+begin_src emacs-lisp
+(stringp "Посмотрите на этого парня изучающего Eмакс лисп")  ;; returns t
+#+end_src
+
+Example with a non-string:
+#+begin_src emacs-lisp
+(stringp 1234)  ;; returns nil
+#+end_src
+
+** Logic Expressions
+Logic expressions allow you to combine expressions using logical operators (=and=, =or=).
+*** What is True?
+When evaluating expressions, everything except =nil= and the empty list =()= is considered true (=t=):
+#+begin_src emacs-lisp
+(if t        'true 'false)  ;; returns 'true
+(if 5        'true 'false)  ;; returns 'true
+(if nil      'true 'false)  ;; returns 'false
+#+end_src
+
+*** Logic Operators
+Emacs provides the following logic operators:
+- =not= - Inverts the truth value of the argument
+- =and= - Returns the last value if all expressions are truthy
+- =or= - Returns the first value that is truthy (short-circuits)
+
+Examples:
+#+begin_src emacs-lisp
+(not t)    ;; returns nil
+(and t t)  ;; returns t
+(or nil 5) ;; returns 5
+#+end_src
+
+** Conditional Expressions
+*** The =if= Expression
+The =if= expression evaluates an expression and based on the result, picks one of two branches:
+#+begin_src emacs-lisp
+(setq number 10)
+
+(if (> number 5)
+    (message "The number is greater than 5.")
+  (message "The number is 5 or less."))
+#+end_src
+
+*** The =when= and =unless= Expressions
+These expressions evaluate forms when a condition is true or false:
+#+begin_src emacs-lisp
+(when (> 2 1) 'foo)    ;; returns 'foo
+(unless (> 2 1) 'foo)  ;; returns nil
+#+end_src
+
+*** The =cond= Expression
+The =cond= expression allows checking multiple conditions:
+#+begin_src emacs-lisp
+(setq a 2)
+(cond ((eql a 1) "Equal to 1")
+      ((> a 1)   "Greater than 1")
+      (t         "Something else!")) ;; returns "Greater than 1"
+#+end_src
+
+*** The =pcase= Expression
+This powerful expression will be covered in a future episode.
+
+** Loops
+There are four ways to loop in Emacs Lisp:
+*** =while=
+Loops until the condition expression returns false:
+#+begin_src emacs-lisp
+(setq my-loop-counter 0)
+(while (< my-loop-counter 5)
+  (message "I'm looping! %d" my-loop-counter)
+  (setq my-loop-counter (1+ my-loop-counter)))
+#+end_src
+
+*** =dotimes=
+A simpler way to loop a fixed number of times:
+#+begin_src emacs-lisp
+(dotimes (count 5)
+  (message "I'm looping more easily! %d" count))
+#+end_src
+
+*** =dolist=
+Loops for each item in a list:
+#+begin_src emacs-lisp
+(dolist (item '("one" "two" "three" "four" "five"))
+  (message "Item %s" item))
+#+end_src
+
+*** Recursion
+Recursion can be fun but is not safe for loops with many cycles:
+#+begin_src emacs-lisp
+(defun efs/recursion-test (counter limit)
+  (when (< counter limit)
+    (message "I'm looping via recursion! %d" counter)
+    (efs/recursion-test (1+ counter) limit)))
+
+(efs/recursion-test 0 5) ;; starts recursion
+#+end_src
+
+** Modes
+** Hooks
+* Resources
+- [[https://stackexchange.com/questions/10938/what-is-the-difference-between-and-in-front-of-a-symbol][Difference between ' and #']]
+  Very little difference actually. =#'= is used when calling functions and lambdas...
+- [[https://www.youtube.com/watch?v=GFtEGETLv0o][Introduction to Common Lisp]]
+  Yes, this is Common Lisp, but it's useful...
+
+

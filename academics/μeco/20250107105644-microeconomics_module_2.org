@@ -1,0 +1,57 @@
+:PROPERTIES:
+:ID:       7cd92370-f0bc-406b-b912-c888df348485
+:END:
+#+title: Microeconomics Module 2 Consumer Behaviour
+* TODO copy from book
+
+** Positive and normative analysis
+
+Positive/descriptive analysis:
+- description, explanation of phenomena as well as their causal relationships
+- definite black/white, right/wrong answers.
+- +subjective+ objective
+- facutal approach
+  
+#+BEGIN_QUOTE
+How much revenue will the tolls on tollgate 5 be (next year)?
+#+END_QUOTE
+
+Normative/prescriptive analysis:
+- statements about how the world /ought/ to be.
+- subjective
+- value-based solution
+- opinions/judgements are incorporated
+- tells one how the world /should/ be.
+#+BEGIN_QUOTE
+Knowing that a toll hike reduces traffic (but will cause inconvenience to commuters), should the toll be increased?
+#+END_QUOTE
+This varies depending on whom you're asking! People who use the tollgate more (say people who travel more through certain region) may not want toll increase, but those living near the toll booth area may want an increase (reduction in toll → less ppl travel → less sound/traffic pollution)
+
+** Utility value ("satisfaction")
+*** An example
+#+BEGIN_VERSE
+You're in a desert. You buy a bottle of water. Subsequent bottles that you buy don't feel /as/ necessary (ofc /unless the price drops/) - /diminishing utility values/.
+#+END_VERSE
+
+** Total Utility
+Sum of the utilities of various goods/services consumed over various points in time.
+
+$$U_x = u_1+u_2+u_3$$
+
+** Marginal Utility
+Utility derived from one additional/marginal unit consumed.
+This is an addition to the total utlility resulting from consumption of 1 additional unit.
+
+$$MU_x = \frac{\Delta TU_x}{\Delta Q_x}$$
+
+$$\Delta Q_x$$ → change in quantity obtained by consumption of 1 unit.
+
+$$MU_n = TU_n - TU_{n-1}$$
+
+With an increase in total utility, marginal utility ...??
+Goods have diminishing marginal utility (you may like 1 chocolate, but 2? You've gotten accustomed to chocolates...)
+
+*** Why does =MU= decrease?
+- need-want tradeoff <<??>>
+
+*** TODO An example - Denim prices =supply vs demand=

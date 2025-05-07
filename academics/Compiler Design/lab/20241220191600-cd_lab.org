@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       af86c173-e2f6-46b0-972f-1ad31048fb1b
+:END:
+#+title: CD Lab
+[[id:d0b5a089-b83d-4770-ab3d-ea1284e7c4cd][CD Lab 1a]]
+[[id:eed69c71-18ac-48ff-b9f4-637dd552563c][CD Lab 1b]]
+[[id:73a93a10-57ba-438c-98b2-8ac3afaa14e7][CD Lab 2]]

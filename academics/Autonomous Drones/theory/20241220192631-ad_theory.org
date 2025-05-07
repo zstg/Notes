@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       2a9314d1-2e7d-4651-9abf-11dc24f3afc8
+:END:
+#+title: AD Theory
+[[id:113142b9-bb64-4619-947c-73cffee39434][Autonomous Drones Module 1 Introduction to Drones]]
+[[id:67c43e79-a4cc-43c0-ab60-a46fb699d160][Autonomous Drones Project ideas]]

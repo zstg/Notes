@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       b4e03430-6a78-4839-8bb4-f989e8c60bba
+:END:
+#+title: TODO
+[[id:95e7a408-1f8f-4976-9a19-c170298a302c][Miscellaneous]]
+- [-] switch ~keycast~ to Doom modeline and disable em tabs
+- [X] migrate to daudix' new website format
+
+* Ideas
+- [ ] implement sudoku in CL
+
+* URLs
+- [ ] https://www.youtube.com/watch?v=-a--UMUslzA

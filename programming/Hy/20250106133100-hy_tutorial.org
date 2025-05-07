@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       3ff120fb-2f5b-4aa6-902f-75aa41262815
+:END:
+#+title: Hy tutorial
+
+#+BEGIN_SRC hy :results output
+(setv var-name "abc")
+(print var-name)
+(print [ 1 2 3 ] )
+#+END_SRC

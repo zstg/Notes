@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       43b81901-17ea-43c4-8cb4-ac2f13370f6e
+:END:
+#+title: LaTeX basics
+
+% \documentclass{article}
+%\begin{document}
+The rain in Spain falls $\emph{mainly}$ on the plain
+
+\begin{equation}                        % arbitrary environments,
+x=\sqrt{\beta}                              % even tables, figures, etc
+\end{equation}
+
+If $a^2=b$ and \( b=2 \), then the solution must be
+either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \] $\ldots$
+
+\begin{itemize}
+\item Tea
+\item Milk
+\item Biscuits
+\end{itemize}
+
+\begin{figure}
+\includegraphics{gerbil}
+\end{figure}
+
+% \end{document}
+
+Single quotes: $`text`$
+Double quotes: $``text``$
+
+$$
+\$\%\&\#!
+$$
+
+$\Omega = \sum_{k=1}^{n} \omega_k$
+

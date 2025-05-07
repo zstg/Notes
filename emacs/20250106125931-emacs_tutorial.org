@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       7e2cac9c-be7a-4405-b497-9464cf209e1b
+:END:
+#+title: Emacs Tutorial
+
+~C-n~ → move down (next line)
+~C-p~ → move up (prev line)
+
+~C-a~ → beginning of line
+~C-e~ → end of line
+
+~C-w~ → cut
+~M-w~ → copy
+~M-y~ → paste from +clipboard+ kill ring
+
+
+~C-f~ → move right (forward)
+~C-b~ → move left (backward)
+
+~C-x u~ → undo
+
+

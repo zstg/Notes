@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       f8a41f78-25e2-4655-9e0f-e2b9238a0afd
+:END:
+#+title: Game Programming Module 1 Introduction to Game Programming
+* Building Games
+*** Demographics
+**** Age
+***** 0-3y
+***** 5+ years
+**** Gender
+**** Culture
+**** Number of players
+**** Game dev cost
+*** Types of gamers
+**** Gaming style
+***** Core gamers
+***** Casual gamers
+- somewhat disinterested, tend to skip levels or games (say they watch a YouTube tutorial 

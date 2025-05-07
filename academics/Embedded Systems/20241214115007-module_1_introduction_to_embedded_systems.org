@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       1c077cad-093e-4921-a0cc-231a2d073dc0
+:END:
+#+title: Embedded Systems Module 1 Introduction to Embedded Systems
+
+#+BEGIN_VERSE
+An embedded system is a special-purpose computer system designed to perform certain dedicated functions.
+#+END_VERSE
+
+Embedded systems are done by dedicated HW and SW with limited resources. They are used for special-purpose computing; each device serves a special purpose.
+Real-time use cases - so they necessitate _cheap_ (therefore resource-efficient) components/devices...
+
+* Applications
+- industrial robots
+- gps receivers
+- digi cam
+- dvd players
+- wireless routers (OpenWRT)
+- Set top boxes
+- Alarm clock, washing machine, elevators, microwaves
+- Crystal oscillator produces clock signals - and these clock signals/pulses define the speed of the processor.
+
+* Purpose
+- Data collection, storage, representation
+- Data communication
+- Data/signal pre-processing
+- Monitoring
+- Controlling
+- Application-specific use cases
+
+* Characteristics
+- *Dedicated to specific tasks*
+- Supported by a wide range of processors and architectures
+- *Cost-sensitive*
+- Real-time constraints
+- Should support parallel processing, pipelining
+
+* Used when
+- Failure is unacceptabl and the consequences could be severe.
+- Extreme environmental conditions
+- /Mostly/ run RTOSs
+- Execution /must/ be deterministic (as is the case with an RTOS)
+
+* Metrics :IMPORTANT:
+** Unit cost
+- This is the cost required to make each copy alone. It /does not/ include the NRE cost.
+** Non-recurring cost
+- This is the _one-time_ cost of designing the system.
+** Size
+- This refers to the physical space that the embedded system takes. It's not storage space...
+** Performance
+** Power consumption
+** Flexibility
+- This refers to the ability to change functionality of the embedded system without incurring a large engineering (aka NRE) cost.
+  
+** Time-to-prototype
+- This refers to the time taken to design a prototype of the embedded system.
+** Time-to-market
+- This refers to the time taken to deliver the (finished) product to the market.
+** Maintainability
+- One must use customer reviews and feedback to modify the system after the initial release.

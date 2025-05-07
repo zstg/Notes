@@ -1,0 +1,150 @@
+:PROPERTIES:
+:ID:       95e7a408-1f8f-4976-9a19-c170298a302c
+:END:
+#+title: Miscellaneous
+* Software
+- [ ] ImHex
+- [ ] Ghidra
+- [ ] [[https://photondev.netlify.app][Photon]] 
+* AI thingies
+- [X] Continue
+- [X] Cursor
+- [X] PearAI
+
+* Links
+:PROPERTIES:
+:ID:       82190fc2-aa77-4a3e-aae2-6cdf54d18c48
+:END:
+- [ ] https://youtu.be/_14E7pDJJ_w
+- [ ] https://youtu.be/N2KO-qVmUMs
+- [ ] https://lean-lang.org/documentation/
+- [ ] https://ovelny.sh/blog/a-complete-guide-for-your-gotosocial-server/
+- [X] https://simpleicons.org/
+- [ ] [[https://robu.in/product/raspberry-pi-micro-sd-card-64gb/?gad_source=1][Raspberry Pi μSD card 64GB]]
+- [ ] https://termui.sh/
+- [ ] 133x.to
+
+* YouTube
+:PROPERTIES:
+:ID:       190aeb14-4f47-43ac-9379-5720925b6e2c
+:END:
+- [X] Imperial
+- [ ] [[https://www.youtube.com/watch?v=8BOiRmjw5aU][DT's Org agenda video]]
+
+* Programming
+:PROPERTIES:
+:ID:       d28669b3-30ca-466c-9664-5eecb822e8a7
+:END:
+
+** Rust
+:PROPERTIES:
+:ID:       04416848-c5cc-435b-b338-e8609dfd4e7f
+:END:
+
+- [ ] https://www.oreilly.com/library/view/programming-rust-2nd/9781492052586/
+- [ ] https://www.oreilly.com/library/view/effective-rust/9781098151393/
+- [ ] https://www.oreilly.com/library/view/rust-programming-essentials/9780138201593/
+- [ ] https://www.oreilly.com/library/view/rust-quickstart-programming/9780138285104/
+- [ ] https://www.oreilly.com/library/view/command-line-rust/9781098109424/
+- [ ] https://www.oreilly.com/library/view/programming-rust/9781491927274/
+- [ ] https://www.oreilly.com/library/view/rust-programming-part/9780138314378/
+- [ ] https://www.oreilly.com/library/view/rust-programming-part/9780138316839/
+- [ ] https://github.com/n0-computer/sendme/blob/main/src/main.rs
+  
+- [ ] https://crates.io/crates/virustotal
+- [ ] +[[https://towardsdatascience.com/nine-rules-for-running-rust-on-the-web-and-on-embedded-94462ef249a2][Nine Rules for Running Rust on the Web and on Embedded]]+ [[id:a69663b3-66e7-4809-80a1-740e4319036f][Embedded systems project ideas]]
+    [[https://towardsdatascience.com/nine-rules-for-running-rust-on-embedded-systems-b0c247ee877e][Nine Rules for Running Rust on Embedded Systems]]
+    [[https://towardsdatascience.com/nine-rules-for-running-rust-in-the-browser-8228353649d1][Nine Rules for Running Rust in the Browser]]
+- [X] https://www.youtube.com/watch?v=1VgptLwP588
+- [X] Host webserver and make it publicly accessible via AWS
+- [ ] Finish multithreading (one thread per user)
+- [ ] Use a separate state per user connection and *time out* after, say, 3 min
+
+[[https://www.youtube.com/watch?v=784JWR4oxOI][All Rust features explained]]
+[[https://www.youtube.com/watch?v=TJTDTyNdJdY][Rust demystified - simplifying the difficult parts]]
+[[https://www.youtube.com/watch?v=CpvzeyzgQdw][All Rust string types explained]] *VERY USEFUL*
+
+[[https://www.youtube.com/watch?v=gRAVZv7V91Q][But what is a lifetime?]]
+[[https://www.youtube.com/watch?v=juIINGuZyBc][Rust lifetimes finally explained]]
+[[https://youtu.be/SWwTD2neodE][5 deadly Rust anti-patterns]] *USEFUL*
+[[id:57edc790-8e14-43ab-a0a0-c78367614674][Rust concepts]]
+
+** C
+:PROPERTIES:
+:ID:       e14398fb-e975-4153-9d58-6fa2b1ad8ad0
+:END:
+
+[[id:4543293c-b422-4803-891d-70248abcc60f][Pointers]]
+
+** Lisps
+:PROPERTIES:
+:ID:       d16962ee-8c56-4289-9052-73c5af586d5d
+:END:
+https://hyperpolyglot.org/lisp#compiler
+*** Common Lisp
+:PROPERTIES:
+:ID:       d4b43338-c27b-4302-b208-735d8be5b416
+:END:
+[[https://m.youtube.com/watch?v=n_7drg-R-YY&pp=ygUhbGVhcm4gcmFja2V0IHByb2dyYW1taW5nIGxhbmd1YWdl#][Common Lisp playlist]]
+*** Hy
+:PROPERTIES:
+:ID:       b776d7ae-c277-42df-b2ea-1e5fc600f92f
+:END:
+- [ ] [[https://hylang.org/hy/doc/v1.0.0][Hy documentation]]
+- [ ] [[https://m.youtube.com/watch?v=E7hTimGmGBs][Introduction to Hy - Lisp in Python | DigitalMind]]
+  [[id:3ff120fb-2f5b-4aa6-902f-75aa41262815][Hy tutorial]]
+*** Emacs Lisp
+:PROPERTIES:
+:ID:       0a29fba6-3ddc-44b9-9d94-43b8cc072805
+:END:
+[[id:acf079dd-ce4a-49d2-8a44-005147d72555][Emacs Lisp tutorial]]
+*** Guile Scheme
+:PROPERTIES:
+:ID:       dc11b641-1da9-4e68-87d2-f7927cd61e3b
+:END:
+[[id:e7315754-31af-4bd5-8248-3fd923ff06b6][Scheme Tutorial]]
+*** Racket
+:PROPERTIES:
+:ID:       fd1e8e94-79cc-4dc8-b54e-2e4ae41d96e1
+:END:
+[[https://m.youtube.com/watch?v=n_7drg-R-YY&pp=ygUhbGVhcm4gcmFja2V0IHByb2dyYW1taW5nIGxhbmd1YWdl#][An Introduction to the Racket programming language (Derek Banas)]]
+[[id:eb6ce119-baf1-480a-80ed-5743ed13888d][Racket Tutorial]]
+** Haskell
+[[id:2fd75729-0c3d-4dfa-8b8a-b1d2e6d201f3][Haskell Programming]]
+* Emacs
+:PROPERTIES:
+:ID:       ea6f59a5-5286-423a-8385-c604156ae3cb
+:END:
+
+[[id:5abbbb19-f4b4-4cd4-b4cd-8c21000a31f1][Org Mode Tutorial]]
+[[id:acf079dd-ce4a-49d2-8a44-005147d72555][Emacs Lisp tutorial]]
+[[id:7e2cac9c-be7a-4405-b497-9464cf209e1b][Emacs Tutorial]]
+
+- [ ] [[https://www.reddit.com/r/emacs/comments/bfsck6/mu4e_for_dummies/][Mu4E for dummies | Reddit]]
+- [ ] https://srijan.ch/emacs-30-1-highlight-intuitive-tab-line
+- [ ] https://www.unwoundstack.com/blog/org-mode-and-latex.html
+- [ ] [[https://youtu.be/0qHloGTT8XE][Perfect Emacs Org Mode Exports to LaTeX – Straightforward Emacs]]
+- [ ] https://github.com/jakebox/jake-emacs
+- [ ] https://www.youtube.com/watch?v=Gi7yBMYZylU
+- [ ] [[https://undo.io/resources/gdb-watchpoint/using-gdb-emacs/][Using GDB in Emacs to improve your debug experience]]  
+- [ ] [[https://youtu.be/2XVJqBrTvPM][Mastering Emacs note-taking as a student]]
+
+* Linux
+:PROPERTIES:
+:ID:       8494d187-639d-4e42-a214-dc339ae03bd1
+:END:
+
+- [[id:d93d96af-9589-4116-93d6-ccb47dcd2a3b][BTRFS subvolumes and snapshots]]
+- [[id:ed840561-c7fe-4ced-ad5e-ef4b7c87eaa1][StratOS todo]]
+- [[id:acf079dd-ce4a-49d2-8a44-005147d72555][Emacs Lisp tutorial]]
+
+* Self-hosting
+- [ ] FreshRSS
+- [ ] LinkWarden
+- [-] VaultWarden
+- [ ] searxng
+- [-] OpenWebUI
+Links
+- [ ] [[https://noted.lol/cloudflare-tunnel-and-zero-trust/][Needs a domain]]
+- [ ] Tailscale 
+  - https://youtu.be/Zx8Je5D6adc

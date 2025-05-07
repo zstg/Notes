@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       b119598b-ddd7-49ab-a7bd-dbd43abfae98
+:END:
+#+title: CD Theory
+
+[[id:c4116524-fce9-4dbe-a534-40d76f3b4dfa][Module 1 Compiler Design basics]]

@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       adf78c93-500f-4a3d-ba3f-6d9df447e990
+:END:
+#+title: AD Lab
+

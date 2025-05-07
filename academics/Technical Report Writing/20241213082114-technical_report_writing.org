@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       aade94ac-5ec7-499d-91d4-637f5e970111
+:END:
+#+title: Technical Report Writing
+

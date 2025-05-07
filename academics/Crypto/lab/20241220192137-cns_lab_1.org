@@ -1,0 +1,370 @@
+:PROPERTIES:
+:ID:       036fe402-d2c8-42a1-8743-2b8cb7a14980
+:END:
+#+title: CNS Lab 1 Implementation of various classic encryption techniques
+#+begin_verse
+In this assignment, you will be required to upload programs implementing classical encryption techniques. Ensure that each program includes both the program code and the corresponding output. Below are the encryption techniques you need to implement:
+
+- Caesar Cipher
+- Monoalphabetic Cipher
+- Playfair Cipher
+- Hill Cipher
+- Vigenère Cipher
+- One-Time Pad Cipher
+- Rail Fence Cipher
+#+end_verse
+
+
+* Algorithms
+#+begin_src python :tangle cipher_algorithms.py
+import string
+import random
+import numpy as np
+import math
+
+# Common Cipher class
+class Cipher:
+    def encrypt(self, text):
+        pass
+
+    def decrypt(self, text):
+        pass
+
+    @staticmethod
+    def validate_input(text):
+        if not text.isalpha():
+            raise ValueError("Text should contain only alphabetic characters.")
+#+END_SRC
+
+** Caesar cipher
+#+BEGIN_SRC python :tangle cipher_algorithms.py
+class CaesarCipher(Cipher):
+    def __init__(self, shift):
+        self.shift = shift
+
+    def encrypt(self, text):
+        encrypted_text = ""
+        for char in text:
+            if char.isalpha():
+                shift = self.shift % 26
+                if char.islower():
+                    encrypted_text += chr((ord(char) - ord('a') + shift) % 26 + ord('a'))
+                elif char.isupper():
+                    encrypted_text += chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+            else:
+                encrypted_text += char
+        return encrypted_text
+
+    def decrypt(self, text):
+        return self.encrypt(text, -self.shift)
+
+#+END_SRC
+
+** Monoalphabetic cipher
+#+BEGIN_SRC python :tangle cipher_algorithms.py
+class MonoalphabeticCipher(Cipher):
+    def __init__(self, key):
+        self.key = key
+        self.alphabet = string.ascii_lowercase
+
+    def encrypt(self, text):
+        table = str.maketrans(self.alphabet, self.key)
+        return text.translate(table)
+
+    def decrypt(self, text):
+        table = str.maketrans(self.key, self.alphabet)
+        return text.translate(table)
+#+END_SRC
+
+** Playfair cipher
+#+BEGIN_SRC python :tangle cipher_algorithms.py
+class PlayfairCipher(Cipher):
+    def __init__(self, key):
+        self.key = self.prepare_key(key)
+
+    def prepare_key(self, key):
+        key = ''.join(sorted(set(key), key=key.index))  # remove duplicates
+        key = key + ''.join([char for char in string.ascii_lowercase if char not in key])  # fill remaining alphabet
+        return key
+
+    def encrypt(self, text):
+        text = text.lower().replace('j', 'i')
+        digraphs = []
+        i = 0
+        while i < len(text):
+            digraph = text[i]
+            if i + 1 < len(text):
+                if text[i] == text[i + 1]:
+                    digraph += 'x'
+                    i += 1
+                else:
+                    digraph += text[i + 1]
+                    i += 2
+            else:
+                digraph += 'x'
+                i += 1
+            digraphs.append(digraph)
+
+        encrypted_text = ''
+        for digraph in digraphs:
+            row1, col1 = divmod(self.key.index(digraph[0]), 5)
+            row2, col2 = divmod(self.key.index(digraph[1]), 5)
+            if row1 == row2:
+                encrypted_text += self.key[row1 * 5 + (col1 + 1) % 5]
+                encrypted_text += self.key[row2 * 5 + (col2 + 1) % 5]
+            elif col1 == col2:
+                encrypted_text += self.key[((row1 + 1) % 5) * 5 + col1]
+                encrypted_text += self.key[((row2 + 1) % 5) * 5 + col2]
+            else:
+                encrypted_text += self.key[row1 * 5 + col2]
+                encrypted_text += self.key[row2 * 5 + col1]
+        return encrypted_text
+    
+    def decrypt(self, text):
+        text = text.lower().replace('j', 'i')
+        digraphs = [text[i:i + 2] for i in range(0, len(text), 2)]
+        decrypted_text = ''
+        for digraph in digraphs:
+            row1, col1 = divmod(self.key.index(digraph[0]), 5)
+            row2, col2 = divmod(self.key.index(digraph[1]), 5)
+            if row1 == row2:
+                decrypted_text += self.key[row1 * 5 + (col1 - 1) % 5]
+                decrypted_text += self.key[row2 * 5 + (col2 - 1) % 5]
+            elif col1 == col2:
+                decrypted_text += self.key[((row1 - 1) % 5) * 5 + col1]
+                decrypted_text += self.key[((row2 - 1) % 5) * 5 + col2]
+            else:
+                decrypted_text += self.key[row1 * 5 + col2]
+                decrypted_text += self.key[row2 * 5 + col1]
+        return decrypted_text
+#+END_SRC
+
+** Hill cipher
+#+BEGIN_SRC python :tangle cipher_algorithms.py
+class HillCipher(Cipher):
+    def __init__(self, key_matrix):
+        self.key_matrix = np.array(key_matrix)
+        self.inv_matrix = np.linalg.inv(self.key_matrix).astype(int)  # Inverse matrix for decryption
+
+    def encrypt(self, text):
+        n = len(self.key_matrix)
+        text = text.lower().replace(' ', '')
+        text = text + 'x' * (n - len(text) % n)  # Padding
+        encrypted_text = []
+        for i in range(0, len(text), n):
+            block = text[i:i + n]
+            block = [ord(c) - ord('a') for c in block]
+            encrypted_block = np.dot(self.key_matrix, block) % 26
+            encrypted_text.append(''.join(chr(c + ord('a')) for c in encrypted_block))
+        return ''.join(encrypted_text)
+
+    def decrypt(self, text):
+        n = len(self.key_matrix)
+        decrypted_text = []
+        for i in range(0, len(text), n):
+            block = text[i:i + n]
+            block = [ord(c) - ord('a') for c in block]
+            decrypted_block = np.dot(self.inv_matrix, block) % 26
+            decrypted_text.append(''.join(chr(c + ord('a')) for c in decrypted_block))
+        return ''.join(decrypted_text)
+#+END_SRC
+
+** Vigenère Cipher
+#+BEGIN_SRC python :tangle cipher_algorithms.py
+class VigenereCipher(Cipher):
+    def __init__(self, key):
+        self.key = key.lower()
+
+    def encrypt(self, text):
+        text = text.lower()
+        encrypted_text = ''
+        for i in range(len(text)):
+            if text[i].isalpha():
+                shift = ord(self.key[i % len(self.key)]) - ord('a')
+                encrypted_text += chr((ord(text[i]) - ord('a') + shift) % 26 + ord('a'))
+            else:
+                encrypted_text += text[i]
+        return encrypted_text
+
+    def decrypt(self, text):
+        decrypted_text = ''
+        for i in range(len(text)):
+            if text[i].isalpha():
+                shift = ord(self.key[i % len(self.key)]) - ord('a')
+                decrypted_text += chr((ord(text[i]) - ord('a') - shift) % 26 + ord('a'))
+            else:
+                decrypted_text += text[i]
+        return decrypted_text
+#+END_SRC
+
+** One-time Pad cipher
+#+BEGIN_SRC python :tangle cipher_algorithms.py
+class OneTimePadCipher(Cipher):
+    def __init__(self, key=None):
+        self.key = key or ''.join(random.choices(string.ascii_lowercase, k=100))
+
+    def encrypt(self, text):
+        encrypted_text = ''
+        for i in range(len(text)):
+            shift = ord(self.key[i]) - ord('a')
+            encrypted_text += chr((ord(text[i]) - ord('a') + shift) % 26 + ord('a'))
+        return encrypted_text
+
+    def decrypt(self, text):
+        decrypted_text = ''
+        for i in range(len(text)):
+            shift = ord(self.key[i]) - ord('a')
+            decrypted_text += chr((ord(text[i]) - ord('a') - shift) % 26 + ord('a'))
+        return decrypted_text
+#+END_SRC
+
+** Rail fence cipher
+#+BEGIN_SRC python :tangle cipher_algorithms.py
+class RailFenceCipher(Cipher):
+    def __init__(self, rails):
+        self.rails = rails
+
+    def encrypt(self, text):
+        rail = ['' for _ in range(self.rails)]
+        row, step = 0, 1
+        for char in text:
+            rail[row] += char
+            if row == 0:
+                step = 1
+            elif row == self.rails - 1:
+                step = -1
+            row += step
+        return ''.join(rail)
+
+    def decrypt(self, text):
+        rail = ['' for _ in range(self.rails)]
+        length = len(text)
+        rail_len = [0] * self.rails
+        row, step = 0, 1
+        for i in range(length):
+            rail_len[row] += 1
+            if row == 0:
+                step = 1
+            elif row == self.rails - 1:
+                step = -1
+            row += step
+        index = 0
+        for i in range(self.rails):
+            rail[i] = text[index:index + rail_len[i]]
+            index += rail_len[i]
+        decrypted_text = ''
+        row, step = 0, 1
+        for _ in range(length):
+            decrypted_text += rail[row][0]
+            rail[row] = rail[row][1:]
+            if row == 0:
+                step = 1
+            elif row == self.rails - 1:
+                step = -1
+            row += step
+            return decrypted_text
+#+end_src
+
+* Server code
+#+begin_src python
+import socket
+from cipher_algorithms import CaesarCipher, MonoalphabeticCipher, PlayfairCipher, HillCipher, VigenereCipher, OneTimePadCipher, RailFenceCipher
+
+# Set up the server
+def create_server():
+    host = '127.0.0.1'
+    port = 65432
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
+        server_socket.bind((host, port))
+        server_socket.listen(1)
+        print(f"Server listening on {host}:{port}...")
+        
+        conn, addr = server_socket.accept()
+        with conn:
+            print(f"Connected to {addr}")
+            while True:
+                cipher_type = conn.recv(1024).decode('utf-8')
+                if cipher_type == 'exit':
+                    break
+
+                text = conn.recv(1024).decode('utf-8')
+                cipher = None
+
+                if cipher_type == 'caesar':
+                    shift = int(conn.recv(1024).decode('utf-8'))
+                    cipher = CaesarCipher(shift)
+                elif cipher_type == 'monoalphabetic':
+                    key = conn.recv(1024).decode('utf-8')
+                    cipher = MonoalphabeticCipher(key)
+                elif cipher_type == 'playfair':
+                    key = conn.recv(1024).decode('utf-8')
+                    cipher = PlayfairCipher(key)
+                elif cipher_type == 'hill':
+                    key_matrix = eval(conn.recv(1024).decode('utf-8'))  # Expect a list of lists
+                    cipher = HillCipher(key_matrix)
+                elif cipher_type == 'vigenere':
+                    key = conn.recv(1024).decode('utf-8')
+                    cipher = VigenereCipher(key)
+                elif cipher_type == 'one_time_pad':
+                    cipher = OneTimePadCipher()
+                elif cipher_type == 'rail_fence':
+                    rails = int(conn.recv(1024).decode('utf-8'))
+                    cipher = RailFenceCipher(rails)
+
+                encrypted_text = cipher.encrypt(text)
+                conn.sendall(encrypted_text.encode('utf-8'))
+
+if __name__ == "__main__":
+    create_server()
+#+end_src
+
+* Client code
+#+begin_src python
+import socket
+
+def create_client():
+    host = '127.0.0.1'
+    port = 65432
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
+        client_socket.connect((host, port))
+        
+        while True:
+            cipher_type = input("Enter cipher type (or 'exit' to quit): ").lower()
+            if cipher_type == 'exit':
+                client_socket.sendall(cipher_type.encode('utf-8'))
+                break
+            
+            client_socket.sendall(cipher_type.encode('utf-8'))
+            text = input("Enter the text to encrypt: ")
+            client_socket.sendall(text.encode('utf-8'))
+            
+            if cipher_type == 'caesar':
+                shift = input("Enter shift for Caesar cipher: ")
+                client_socket.sendall(shift.encode('utf-8'))
+            elif cipher_type == 'monoalphabetic':
+                key = input("Enter key for Monoalphabetic cipher: ")
+                client_socket.sendall(key.encode('utf-8'))
+            elif cipher_type == 'playfair':
+                key = input("Enter key for Playfair cipher: ")
+                client_socket.sendall(key.encode('utf-8'))
+            elif cipher_type == 'hill':
+                key_matrix = input("Enter Hill cipher key matrix (e.g., [[6,24,1],[13,16,10],[20,17,15]]): ")
+                client_socket.sendall(key_matrix.encode('utf-8'))
+            elif cipher_type == 'vigenere':
+                key = input("Enter key for Vigenere cipher: ")
+                client_socket.sendall(key.encode('utf-8'))
+            elif cipher_type == 'rail_fence':
+                rails = input("Enter number of rails for Rail Fence cipher: ")
+                client_socket.sendall(rails.encode('utf-8'))
+
+            encrypted_text = client_socket.recv(1024).decode('utf-8')
+            print(f"Encrypted text: {encrypted_text}")
+
+if __name__ == "__main__":
+    create_client()
+#+end_src
+
+* Output
+[[file:~/Screencasts/Screencast_20241220_223412.mp4][Algos demo]]

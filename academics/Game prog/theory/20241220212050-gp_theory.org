@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       da697895-3aeb-40a8-b4c3-ad7d679487a8
+:END:
+#+title: GP Theory
+[[id:f8a41f78-25e2-4655-9e0f-e2b9238a0afd][Module 1 Introduction to Game Programming]]

@@ -1,0 +1,131 @@
+:PROPERTIES:
+:ID:       4543293c-b422-4803-891d-70248abcc60f
+:END:
+#+TITLE: Pointers
+#+PROPERTY: header-args:C :tangle /tmp/Pointers.c :noweb yes
+
+
+This is a simple demonstration of function pointers, string copying, and pointer manipulation in C.
+
+** Step 1: Define Function Pointer Type
+The first part of the code defines a function pointer type and includes the necessary header for I/O operations.
+This ~func_t~ function is an "easy" way to iterate and run a certain function depending on conditions. This is done later on.
+
+#+NAME: one
+#+BEGIN_SRC C :includes <stdio.h> :noweb yes
+#include <stdio.h>
+typedef int (*func_t)(int, int);
+#+END_SRC
+
+~func_t~ is a fucntion pointer. It stores/returns an address to a function.
+
+** Step 2: Define Basic Arithmetic Functions
+Next, we define some basic arithmetic test functions  that fit the definition of ~func_t~: addition, subtraction, multiplication, division, and modulus. Nothing complex here!
+
+#+NAME: two
+#+BEGIN_SRC C :noweb yes
+<<one>>
+int add(int a, int b) { return (a + b); }
+int sub(int a, int b) { return (a - b); }
+int mul(int a, int b) { return (a * b); }
+int dvd(int a, int b) { return (a / b); }
+int mod(int a, int b) { return (a % b); }
+#+END_SRC
+
+** Step 3: Create Function Table
+We then create a function table (an array of function pointers) that will allow us to call any of the functions defined earlier dynamically.
+
+#+NAME: three
+#+BEGIN_SRC C :noweb yes
+<<two>>
+func_t ftbl[5] = {&add, &sub, &mul, &dvd, &mod};
+#+END_SRC
+
+We create this ~ftbl~ _function table_ that stores addresses of several functions in memory. These functions can be called depending on conditions.
+
+** Step 4: String Copy Function
+This function copies a string from a source to a destination buffer. It is important to handle `NULL` pointers to avoid undefined behavior.
+
+#+NAME: four
+#+BEGIN_SRC C :noweb yes
+<<three>>
+void strcopy(char *dst, char *src) {
+    if ((dst == NULL) || (src == NULL))
+        return;
+
+    while (*src != 0)
+        *dst++ = *src++;
+}
+#+END_SRC
+
+~dst~ is a character pointer. It stores the _address_ of a variable of ~char~ type. We say ~*dst~, the value present in the address (that this variable stores) is of type ~char~.
+
+** Step 5: Call by Value and Call by Reference
+Here, we demonstrate two different approaches to passing arguments to functions:
+1. *Call by Value*: The function arguments are passed by copying their values.
+2. *Call by Reference*: The function modifies the original variables using pointers.
+
+#+NAME: five   
+#+BEGIN_SRC C :noweb yes
+<<four>>
+int callbyval(int m, int n) {
+    m++;
+    n++;
+    return m + n;
+}
+
+int callbyref(int *m1, int *n1) {
+    *m1 += 1;
+    *n1 += 1;
+    return *m1 + *n1;
+}
+#+END_SRC
+
+~callbyref~ takes /addresses/ as arguments. Of course these addresses end up storing ~int~ values. We increment the actual content in the addresses ~m1~ and ~n1~, not the data. Since we modify the variables /in/ the memory locations specified, the value would (obviously) be accessible in the caller's scope (i.e the changes propagate in the caller's _stack frame_). This is clearly understood when we test the changed values in the next function.
+
+~(*m1)++~ does nothing - it increments m1, whose scope is only the function, and it does nothing with that dereferenced value.
+
+** Step 6: Main Function and Program Logic
+The ~main~ function sets up the necessary variables and calls the above functions to demonstrate how they work. The program also prints the contents of a string buffer and a memory dump using pointers.
+
+#+BEGIN_SRC C :noweb yes :results verbatim
+<<five>>
+int active() {
+    char strarr[16];
+    register char *str = strarr; // str (initially) "points to"/stores the address of strarr[0]...
+    unsigned int *ptr;
+    int cnt = 0;
+    int m = 15, n = 6;
+    register int op = 4; // for now, hardcoded to the modulo operator - rather than fumbling with input. We store this variable in a register for perf reasons - and because we don't want it to be stored up in memory
+
+    printf("Operation result: %d\n", (*ftbl[op])(m, n)); // the content of ftbl[4] is the modulo function. Perform the action in <modulo's address>, ie the modulo fn.
+
+    // Call by value
+    printf("\nm = %d, n = %d, called by value: %d", m, n, callbyval(m, n));
+    printf("\nm=%d, n=%d\n", m, n);
+
+    // Call by reference
+    printf("\nm = %d, n = %d, called by reference: %d\n", m, n, callbyref(&m, &n)); // obviously we pass the addresses of m and n, not values! Changes to m and n are done in-place.
+    printf("\nm=%d, n=%d\n", m, n);
+
+    strcopy(strarr, "Ayyvane ");
+    // Since str is the address of the first element of strarr, dereferencing str (and incrementing it simultaneously) gets us the contents of strarr!
+    while (*str != 0)
+        printf("%x ", *str++);
+    printf("\n");
+
+    // Pointer manipulation and memory display
+    ptr = &cnt;
+    while (cnt < 96) {
+        if ((cnt % 4) == 0) 
+            printf("\n%x :: ", ptr);
+        printf("%08x ", *ptr);
+        ptr++;
+        cnt++;
+    }
+}
+
+void main() {
+    active();
+}
+#+END_SRC

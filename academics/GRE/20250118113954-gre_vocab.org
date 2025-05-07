@@ -1,0 +1,362 @@
+:PROPERTIES:
+:ID:       530ae391-23f3-45c8-9a92-bd6d70ed1ac9
+:END:
+#+title: GRE verbal vocabulary
+|----------------------------------------------------------+---------------------------------------------------------------------------------------------------|
+| Word                                                     | Meaning                                                                                           |
+|----------------------------------------------------------+---------------------------------------------------------------------------------------------------|
+| unwonted                                                 | Unused to                                                                                         |
+| truculence                                               | tendency to fight, savage, aggressive                                                             |
+| caparisoned, festooned                                   | adorn, wear, decorate                                                                             |
+| innocuous                                                | lacking capacity to injure, /appavi/                                                                |
+| capitulation                                             | surrender                                                                                         |
+| recapitulation                                           | rebirth/ /palingenesis/ (opp /cænogenesis/), repetition/summary/recap                                 |
+| /sine qua non/                                             | indispensable                                                                                     |
+| vituperation                                             | abusive language                                                                                  |
+| vitriolic                                                | acidulously biting, acidic language                                                               |
+| eschew                                                   | avoid                                                                                             |
+| bandied about                                            | circulated                                                                                        |
+| fastidious                                               | careful, paying attention to detail                                                               |
+| sedulous,assiduous                                       | sincere, hardworking                                                                              |
+| abjure                                                   | reject, retract, renounce, backtrack on                                                           |
+| abrogate, rescind                                        | to repeal (a law)                                                                                 |
+| adjure                                                   | ask/order someone to do smth                                                                      |
+| adulation,panegyric                                      | excess admiration (panegyric includes "nothing bad is said about said person")                    |
+| beatific                                                 | experiencing/bestowing *celestial* joy, as benign and carefree as an angel                          |
+| choleric                                                 | angry, easily annoyed                                                                             |
+| contumacious                                             | refusing to obey in a way that shows contempt                                                     |
+| desultory                                                | lack of plan/purpose                                                                              |
+| duress                                                   | under force/threat (confessing under duress)                                                      |
+| execrable, blighted                                      | deplorable, detestable, deserving a curse                                                         |
+| gregarious                                               | having a tendency to form groups with others, extroverted                                         |
+| overbearing                                              | too confident, tendency to tell others what to do                                                 |
+| egregious                                                | conspiuously and outrageously bad, reprehensible; widely viewed as bad/unjust                     |
+| imprecation, malediction                                 | cursing                                                                                           |
+| ingratiating                                             | people-pleasing (may be good or excess)                                                           |
+| gratuitous                                               | uncalled for; given away for free                                                                 |
+| assuage, placate                                         | appease, satisfy, gain someone's goodwill                                                         |
+| ingrate                                                  | ungrateful                                                                                        |
+| demagogue, fawn, obsequious, unctuous, solicitous        | servile, sucking up to (in the case of a /demagogue/, to the public)                                |
+| maladroitness                                            | awkward, clumsy movement (opposite adroit)                                                        |
+| paladin                                                  | knight                                                                                            |
+| redoubtable                                              | strong opponent invoking respect and fear                                                         |
+| preposterous                                             | stupid                                                                                            |
+| apocryphal                                               | a widely believed story that's actually _false_                                                     |
+| specious                                                 | a commonsensical story/thing that's actually wrong                                                |
+| contretemps                                              | small argument or an unlucky event that attracts public attention; embarassment                   |
+| fortuitously                                             | (of something that is to your advantage) not planned, happening by chance                         |
+| libertine, impropreity                                   | immoral, dishonest                                                                                |
+| peccadillo, gaffe                                        | mistake, blunder, typo, mix-up                                                                    |
+| impute, censure; censorious                              | blame; critical                                                                                   |
+| inarticulate                                             | can't/won't speak (a mute person, objects etc)                                                    |
+| unctuous                                                 | unpleasantly/excessively suave or ingratiating in speech                                          |
+| ingratiating                                             | people-pleasing (may be good or excess)                                                           |
+| gratuitous                                               | uncalled for; given away for free                                                                 |
+| assuage, placate                                         | appease, satisfy, gain someone's goodwill                                                         |
+| lachrymose, dolorous                                     | [[https://www.youtube.com/watch?v=bnmAi53H520][ /lacrimosa/ (Latin)]] , tearful, likely to cry, sad                                                  |
+| panache                                                  | stylish, original, confident; charismatic                                                         |
+| poignant                                                 | moving, touching, arousing, disgusting (has +ve and -ve connotations!)                            |
+| polemy, animadversion, obloquy, calumny                  | disgrace, absolutely _detractive_ language, strong public criticism                                 |
+| prescience, presage, prognostication, portent            | a sign of something to happen; an omen                                                            |
+| adumbrate                                                | foreshadow, to predict                                                                            |
+| umbrage                                                  | annoyance, displeasure, resentment                                                                |
+| prescience                                               | ability to predict/suggest the future                                                             |
+| onerous                                                  | tiresome, burdensome                                                                              |
+| ratiocination                                            | making judgements based on logic                                                                  |
+| supernal (th)                                            | supernatural, spiritual                                                                           |
+| germane                                                  | closely related to; relevant/important/pertinent to a discussion                                  |
+| atavistic                                                | happening bcos of an old habit; primal; unconscious occurence (atavistic fear of the dark)        |
+| bellicose, belligerent                                   | willing to start a war, wiling to fight (resp)                                                    |
+| intractable                                              | difficult to manage                                                                               |
+| bellwether                                               | leader                                                                                            |
+| cosset                                                   | pamper                                                                                            |
+| coterie                                                  | group with a common interest                                                                      |
+| furbelow                                                 | (a piece of clothing that is) showy, extravagant or superfluous                                   |
+| gaucherie                                                | a tactless, awkward act                                                                           |
+| ineffable                                                | incapable of being expressed in words (has +ve and -ve connotations!)                             |
+| inexorable                                               | relentless, unstoppable                                                                           |
+| inscrutable, arcane, recondite, inscrutable, tortousness | obscure, difficult to understand                                                                  |
+| jaunt                                                    | a short trip or journey (usually for pleasure)                                                    |
+| vernal                                                   | relating to spring time                                                                           |
+| exigency                                                 | diffuclties of a situation, urgency, emergency                                                    |
+| facile                                                   | done with little effort                                                                           |
+| insidious                                                | scary, frightening                                                                                |
+| indigent, necessitous                                    | poor, needy                                                                                       |
+| outmoded                                                 | outdated, obsolete, obsolescent                                                                   |
+| resonant                                                 | - sounding                                                                                        |
+|                                                          | - bring to mind; redolent, evocative                                                              |
+| restive                                                  | +patient, at rest+ impatient, uneasy, high-strung, tense                                            |
+| sensibilities                                            | feelings/respect (for other cultures)                                                             |
+| shibboleth                                               | (Hebrew) something said by a group of people                                                      |
+| provisional                                              | temporary announcement                                                                            |
+| provincial                                               | associated with a province; a provincial person is a /bumpkin/                                      |
+| acerbity, acrimony                                       | rough, bitter fight                                                                               |
+| ailurophile                                              | cat lover                                                                                         |
+| autodidact                                               | self-taught                                                                                       |
+| distaff                                                  | feminine (antonym tomboyish, hoydenish)                                                           |
+| sullen, dour-faced                                       | sad, disappointed                                                                                 |
+| enjoin, exhort                                           | strongly encourage; urge                                                                          |
+| incunabula                                               | works produced before an art/event was popularized; books published before /1501/                   |
+| interdict                                                | prohibition, restriction                                                                          |
+| tyro                                                     | newbie                                                                                            |
+| dillettante                                              | a person who shows /temporary/ interest in something; a person who /pretends/ to be knowledgeable     |
+| prerogative                                              | exclusive power; privilege                                                                        |
+| cabal                                                    | a person involved in a scheme/plan/ _junta_ (military dictatorship)                                 |
+| surreptitious                                            | furtive, covert, done by clandestine means, done in secret                                        |
+| vicarious                                                | deriving joy from seeing/hearing/reading about the activities that others +you+ do                  |
+| adamantine                                               | vociferous, adamant, immovable, unchangeable, fixed, rigid                                        |
+| asseverate (th)                                          | declare, avow, state, avouch, assert, aver, contend, certify, affirm                              |
+| beguile                                                  | captivate, (beguile the time) pass time pleasantly                                                |
+| capricious                                               | mood swings                                                                                       |
+| pellucid, cogent                                         | clearly defined and expressed                                                                     |
+| succinct                                                 | clear and concise, expressing something without unnecessary words                                 |
+| commiserate                                              | pity, sympathise                                                                                  |
+| supercilious                                             | haughty, "I'm better than everyone" attitude, superiority complex                                 |
+| descrying                                                | to see something/someone                                                                          |
+| gibbet                                                   | a platform/structure from which criminals where hanged                                            |
+| homily                                                   | written/spoken advice on how a person should behave                                               |
+| incongruous                                              | lacking consistency, nonconforming, lacking /propriety/                                             |
+| indite                                                   | compose                                                                                           |
+| obdurate                                                 | adamant about being wrong/doing mistakes                                                          |
+| ostentatious, conspicuous, pretentious, meretricious     | seeking to attract attention. (ant) self-effacing                                                 |
+| effacing                                                 | "getting rid of"                                                                                  |
+| ostensible                                               | based on appearance                                                                               |
+| plebeian                                                 | commonplace                                                                                       |
+| plebiscite                                               | voting-related thing                                                                              |
+| prolix                                                   | long-winded, elaborate, prolonged                                                                 |
+| ravenous                                                 | voracious                                                                                         |
+| retroactive                                              | done after something has been done (in hindsight)                                                 |
+| putative, supposititious                                 | based on a hypothesis/supposition, fradulently substituted(spurious)                              |
+| testily                                                  | easily irritated                                                                                  |
+| toady                                                    | sycophant                                                                                         |
+| humbug                                                   | decitful, insincere                                                                               |
+| vacillate                                                | hesitate                                                                                          |
+| loath                                                    | reluctant, hesitant                                                                               |
+| vagary                                                   | an erratic, unpredictable, or extravagant manifestation, action, or notion                        |
+| stymied                                                  | prevent something from happening                                                                  |
+| scotch, stymie                                           | abruptly end, thwart                                                                              |
+| unflappable                                              | calm, composed                                                                                    |
+| buttress                                                 | support, strengthen                                                                               |
+| rile up                                                  | to upset                                                                                          |
+| hoodwink                                                 | to cheat                                                                                          |
+| collate, corral                                          | to round up, gather, collect                                                                      |
+| plucky                                                   | not easily daunted                                                                                |
+| pussilanimous, cravenness                                | cowardly                                                                                          |
+| recreant                                                 | going back on one's beliefs, cowardly, unfaithful, a person who does tergiversation               |
+| antediluvian                                             | "before the deluge" → ancient                                                                     |
+| erudite                                                  | scholarly                                                                                         |
+| chastening                                               | punishment                                                                                        |
+| latitude                                                 | freedom                                                                                           |
+| ignominy                                                 | infamy                                                                                            |
+| minatory                                                 | warning/threat; foreboding                                                                        |
+| objurgation                                              | harsh reprimanding, scolding                                                                      |
+| susurrated                                               | whispered                                                                                         |
+| chimerical                                               | the nature of a chimera; vainly or fancifully conceived; imaginary, visionary                     |
+| consummate                                               | perfect in every way                                                                              |
+| burnishing                                               | to make shiny and/or smooth by rubbing                                                            |
+| parsimony                                                | thrifty/miserly                                                                                   |
+| patently                                                 | clearly, evidently, obviously                                                                     |
+| scurrilous                                               | foul-mouthed, vulgar, abrusive +abusive+, slanderous, defamatory                                    |
+| taciturn                                                 | silent (ant. voluble)                                                                             |
+| arrogate                                                 | to claim something without having the right to do so; to take something illegally and/or by force |
+| supererogatory, superfluous                              | done in excess                                                                                    |
+| sacredotal, hieratic                                     | priestly, sacred                                                                                  |
+| protean                                                  | easily and/or continuously changing, having/displaying many forms                                 |
+| adventitious, supervenient                               | extrinsic, external                                                                               |
+| dilatory                                                 | to delay someone/something                                                                        |
+| prorogue                                                 | to defer/postpone                                                                                 |
+| prelate                                                  | religious authority                                                                               |
+| eccleclastical                                           | related to the Church                                                                             |
+| provenance                                               | place of origin, source, derivation                                                               |
+| opportunistic, expeditious                               | efficient                                                                                         |
+| reprise                                                  | repeat (esp wrt music)                                                                            |
+| reprisal                                                 | to seek revenge                                                                                   |
+| renascence                                               | to revive something after it has been lost/forgotten for some time                                |
+| stultified                                               | limited in growth                                                                                 |
+| rebuff                                                   | reject, to snub                                                                                   |
+| galvanized                                               | motivated                                                                                         |
+| bullish                                                  | muscular                                                                                          |
+| sybarite                                                 | hedonist                                                                                          |
+| subsume                                                  | to absorb into or cause to be overshadowed by something else; to generalize; to include           |
+| subvert                                                  | to upend, overthrow, destroy                                                                      |
+| extirpate                                                | destroy                                                                                           |
+| verisimilitude                                           | the (appearance of) truth                                                                         |
+| canard                                                   | rumour                                                                                            |
+| inchoate                                                 | partially in existence, imperfectly formed                                                        |
+| sartorial                                                | related to clothing                                                                               |
+| fulsome                                                  | excess praise                                                                                     |
+| numinous                                                 | less extreme form of hagiographic; saintly, sacred                                                |
+| conflate                                                 | mix, bring together                                                                               |
+| coda                                                     | a piece that comes at the very end of something                                                   |
+| nary                                                     | not a; no more ("heard nary a sound")                                                             |
+| bridle, bristle                                          | express anger                                                                                     |
+| quibble                                                  | complain; express minor reservation                                                               |
+| beam, chortle, guffaw                                    | express joy                                                                                       |
+| braggadocio                                              | arrogant, proud behaviour                                                                         |
+| lickspittle, bootlicker                                  | a person who behaves obsequiously to those in power                                               |
+| incontroversible , unimpugnable, irreproachable          | always right, indisputable                                                                        |
+| gainsay                                                  | deny, contradict, challenge                                                                       |
+| coy, demure                                              | playfully shy, sober, grave                                                                       |
+| phlegmatic                                               | calm, peaceful emotion                                                                            |
+| languid                                                  | slow, relaxed                                                                                     |
+| engender                                                 | create                                                                                            |
+| glib                                                     | using words in a way that is clever and quick, but not sincere.                                   |
+| sylvan                                                   | "wooden" feeling                                                                                  |
+| maven                                                    | skilled                                                                                           |
+| reticent                                                 | a person who is shy and retiring, formal                                                          |
+| tepid                                                    | showing little emotion                                                                            |
+| equivocal                                                | ambiguous                                                                                         |
+| despot, autocrat                                         | dictator                                                                                          |
+| saturnine                                                | bitter                                                                                            |
+| sanguine                                                 | optimistic                                                                                        |
+| sanguinary                                               | bloody                                                                                            |
+| consanguineous                                           | related by blood (from the same ancestor)                                                         |
+| remediate, redress                                       | support, address concern                                                                          |
+| tremulous                                                | trembling, shivering                                                                              |
+| untenable                                                | can't be supported/defended any longer, unjustifiable                                             |
+| balmy                                                    | pleasant weather                                                                                  |
+| duplicitous                                              | cheating, duping                                                                                  |
+| inimical                                                 | obstruct/harm                                                                                     |
+| probity                                                  | morality                                                                                          |
+| facetious                                                | inappropriate joking                                                                              |
+| needling                                                 | provoke playfully                                                                                 |
+| ameliorate                                               | improve                                                                                           |
+| profligate                                               | recklessly wasteful (/anavasya/)                                                                    |
+| middling                                                 | moderate                                                                                          |
+| peter out                                                | dwindle                                                                                           |
+| vindication                                              | evidence                                                                                          |
+| pulchritudinous, beguiling                               | beautiful                                                                                         |
+| unprepossessing                                          | unfavourable/neutral                                                                              |
+| artifice, inveigle                                       | persuade someone to do something using deception/flattery                                         |
+| simpatico                                                | (of a person) likeable, easy to get on with                                                       |
+| inure                                                    | accustome someone to (an unpleasant) thing                                                        |
+| effusive                                                 | showing unrestrained/heartfelt gratitude                                                          |
+| amortize                                                 | reduce or pay off (a debt) with regular payments                                                  |
+| hector                                                   | bully talk                                                                                        |
+| coltish                                                  | energetic but awkward in one's movements or behaviour                                             |
+| chary, cagy, cagey                                       | wary                                                                                              |
+| fecund                                                   | capable of producing (many) offspring                                                             |
+| concomitant                                              | naturally accompanying/associated                                                                 |
+| quixotic                                                 | extremely idealistic; unrealistic and impractical                                                 |
+| verdant                                                  | (of fields, etc.) covered with green plants or grass                                              |
+| dulcet                                                   | (especially of sound) sweet and soothing                                                          |
+| amicable                                                 | polite                                                                                            |
+| amiable                                                  | friendly                                                                                          |
+| ardour                                                   | enthusiasm                                                                                        |
+| excoriation                                              | abrading, chafing, wearing off of the skin                                                        |
+| minutiae                                                 | small/precise/trivial details                                                                     |
+| indolence, langour                                       | laziness                                                                                          |
+| unseemly                                                 | impolite, inappropriate                                                                           |
+| mordant                                                  | ironic, acidic humour, sinister                                                                   |
+| purblind                                                 | myopic                                                                                            |
+| tribulation                                              | trouble                                                                                           |
+| travail                                                  | intensive labour                                                                                  |
+| canard                                                   | myth                                                                                              |
+| edify                                                    | build; improve/instruct morally                                                                   |
+| sanctimony                                               | excessively fake piety                                                                            |
+| conciliation                                             | (legal) 2 parties resolving legal troubles (through a conciliator)                                |
+| repudiate                                                | refute to recognize                                                                               |
+| Qualify                                                  | to restrict a statement                                                                           |
+| Artful                                                   | clever and deceptive                                                                              |
+| Oblique                                                  | indirect                                                                                          |
+| Empiricism                                               | action based on practise                                                                          |
+| Iconoclastic                                             | trad breaker                                                                                      |
+| Pellucid                                                 | lucid                                                                                             |
+| Insufferable                                             | unbearable                                                                                        |
+| Implicate                                                | convey a meaning                                                                                  |
+| Antiquated                                               | old                                                                                               |
+| Corroborate                                              | confirm                                                                                           |
+| Disingenuous                                             | pretending to be _honest_                                                                           |
+| Obtuse                                                   | slow to learn                                                                                     |
+| Badger                                                   | pester                                                                                            |
+| Jocular                                                  | humorous                                                                                          |
+| Veritably                                                | undoubtedly                                                                                       |
+| Implausible                                              | _unbelievable_                                                                                      |
+| Placate                                                  | to pacify or make less angry                                                                      |
+| Pith (of something)                                      | the most essential part of something                                                              |
+| Presumptuous                                             | overly forward                                                                                    |
+| Debonair                                                 | charm and sophistication                                                                          |
+| Flippant                                                 | disrespecting ("flipping someone off")                                                            |
+| Cede                                                     | give up something                                                                                 |
+| Indecorous                                               | impolite                                                                                          |
+| Aphorism                                                 | short sentences _Nietzsche used aphorisms to encapsulate entire thoughts in 1 sentence._            |
+| Creditable                                               | good but not great                                                                                |
+| Estimable                                                | deserving of respect                                                                              |
+| Cardinal                                                 | most important                                                                                    |
+| Squelch                                                  | suppress                                                                                          |
+| Unforthcoming                                            | not cooperative                                                                                   |
+| Improvident                                              | careless                                                                                          |
+| Attenuation                                              | reduction                                                                                         |
+| Primacy                                                  | importance                                                                                        |
+| Meander                                                  | wander                                                                                            |
+| Contentious                                              | causing arguments                                                                                 |
+| Pastoral                                                 | rural from _pasture_                                                                                |
+| Maverick                                                 | radical thinker                                                                                   |
+| Complaisant                                              | cheerfully obedient                                                                               |
+| Evanescent                                               | short-lived                                                                                       |
+| Puerile                                                  | childish                                                                                          |
+| Ebullient                                                | enthusiastic                                                                                      |
+| Chagrin                                                  | dismay                                                                                            |
+| Histrionic                                               | overly theatrical                                                                                 |
+| Tact                                                     | proper social behaviour                                                                           |
+| Diatribe                                                 | verbal attack; tirade                                                                             |
+| Bastardisation                                           | corruption                                                                                        |
+| Gambit                                                   | scheme                                                                                            |
+| Charlatan                                                | con artist                                                                                        |
+| Vindictive                                               | seeking revenge                                                                                   |
+| Grandiloquent                                            | pompous                                                                                           |
+| Clemency                                                 | mercy                                                                                             |
+| Malinger                                                 | avoid work                                                                                        |
+| Epigram                                                  | witty saying                                                                                      |
+| Epiphany                                                 | sudden recognition                                                                                |
+| Adjudicate                                               | ad + judicate "to judicate" to judge                                                              |
+| Antedate an event                                        | (event comes after the date) - precede ("I didn't know UNIX ~existed before~ antedated Emacs")      |
+| Noisome                                                  | foul-smelling                                                                                     |
+| Unpropitious                                             | unlike to be successful                                                                           |
+| Conflagration                                            | large fire                                                                                        |
+| Prodigality, Spendthrift                                 | wasteful with money                                                                               |
+| Precipitately                                            | hastily                                                                                           |
+| Apothegm                                                 | short saying                                                                                      |
+| Denouement                                               | resolution of a story                                                                             |
+| Trite                                                    | lacking originality ("trite tag" ≈ cliche)                                                        |
+| (Finishing a task with) dispatch                         | speed and efficiency                                                                              |
+| Catholic                                                 | universal                                                                                         |
+| Perspicacious, Sagacious                                 | wise                                                                                              |
+| Tribulation                                              | suffering                                                                                         |
+| Halcyon                                                  | peaceful time period (the good old days)                                                          |
+| Tempestuous                                              | very emotional                                                                                    |
+| Puissant                                                 | powerful                                                                                          |
+| Obstreperous                                             | noisily defiant                                                                                   |
+| Imperious                                                | domineering, arrogant                                                                             |
+| Percipient                                               | perceptive                                                                                        |
+| Firebrand                                                | troublemaker                                                                                      |
+| Conniving                                                | scheming to do something bad                                                                      |
+| Proscribe                                                | _ban_                                                                                               |
+| Ethereal                                                 | TODO delicate                                                                                     |
+| Malfeasance                                              | hate/contempt                                                                                     |
+| Irascible                                                | easily irritated/angered                                                                          |
+| Assuage                                                  | make less severe                                                                                  |
+| Baleful                                                  | threatening                                                                                       |
+| Patent                                                   | glaringly obvious                                                                                 |
+| Pecuniary                                                | money-related                                                                                     |
+| Punctilious                                              | precise                                                                                           |
+| Moribund                                                 | about to die                                                                                      |
+| Prosaic                                                  | dull <??>                                                                                         |
+| Encumber                                                 | to hold back                                                                                      |
+| Officious                                                | meddlesome                                                                                        |
+| aver                                                     | accept/put up with                                                                                |
+| touchstone                                               | a defining event/thing used for making judgements (FvF was a judgestone for autophiles)           |
+| contrived                                                | artificially created                                                                              |
+| mote                                                     | speck; small amount                                                                               |
+| covey                                                    | small group                                                                                       |
+| blithe                                                   | carefree, lighthearted                                                                            |
+| lithe                                                    | agile and flexible                                                                                |
+| baroque                                                  | ornate, extragagant, detailed                                                                     |
+| leitmotif                                                | recurrent theme                                                                                   |
+| salubrious                                               | healthy                                                                                           |
+| behoove (you)                                            | it would "do you some good" to be nicer to people                                                 |
+| couched in                                               | fits into                                                                                         |
+| pell-melled                                              | disorderly                                                                                        |
+| avant-garde                                              | +spontaneous+ innovative                                                                            |
+| indemnify                                                | protect against hurt or loss                                                                      |
+|----------------------------------------------------------+---------------------------------------------------------------------------------------------------|

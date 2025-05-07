@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:       d93d96af-9589-4116-93d6-ccb47dcd2a3b
+:END:
+#+title: BTRFS subvolumes and snapshots
+
+* Subvolumes 
+Each subvolume works like an independent filesystem.
+
+Snapper's convention uses ~@home~, ~@var~ etc.. need not be that way.
+
+#+begin_src bash
+# Create a root subvolume (if not already created)
+btrfs subvolume create /mnt/btrfs_root/@
+
+# Create a home subvolume
+btrfs subvolume create /mnt/btrfs_root/@home
+
+# Create a var subvolume
+btrfs subvolume create /mnt/btrfs_root/@var
+
+# Create a tmp subvolume
+btrfs subvolume create /mnt/btrfs_root/@tmp
+
+# Create a snapshots subvolume
+btrfs subvolume create /mnt/btrfs_root/@snapshots
+
+# Create a backup subvolume
+btrfs subvolume create /mnt/btrfs_root/@backup
+
+# Create a media subvolume
+btrfs subvolume create /mnt/btrfs_root/@media
+#+END_SRC
+
+* Snapshots
+- Read-only copies of subvolumes.
+- Works similar to a read-only NixOS generation.
+- Snapshots are read-only by default
+
+
+* Reference
+https://fedoramagazine.org/working-with-btrfs-general-concepts/
+
+https://fedoramagazine.org/working-with-btrfs-subvolumes/
+
+https://fedoramagazine.org/working-with-btrfs-snapshots/

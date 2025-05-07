@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       80f8eb2a-9acf-4701-a290-364ee8f81f2a
+:END:
+#+title: Compiler Design
+[[id:b119598b-ddd7-49ab-a7bd-dbd43abfae98][CD Theory]]
+[[id:af86c173-e2f6-46b0-972f-1ad31048fb1b][CD Lab]]
+* Theory Portions
+** CAT1
+- 1.5 modules (since analysis phase takes time)
+
+** CAT2
+- synthesis phase doesnt take much time

@@ -1,0 +1,30 @@
+:PROPERTIES:
+:ID:       67c43e79-a4cc-43c0-ab60-a46fb699d160
+:END:
+#+title: AD project ideas
+
+* Core idea
+- Comparison of photo vs phone-AI vs drone vs drone-AI (and/or) drone-text (i.e "What can be better?")
+- https://typefly.github.io/
+- Use 1 particular photo type (say of the moon) - and moon image datasets
+- Analyze what could make the image better and report it.
+  - Try to see which filter you can apply to make it better.
+  - Note that minimal criteria simplify our work.
+- https://github.com/ototadana/imgflw
+
+* Working
+- Take instructions from prompt
+- Use LLM to parse query. Also use web searches if necessary (_"/determine coordinates of the moon/"_ and such)
+- Turn said query into an _action_ (how do we do this? is there a drone prog lang or such?)
+- Perform the action (i.e _"/navigate to ~<x,y>~ and rotate <angle>/"_) and take photo
+- Store photo in db (Firebase? Sqlite?)
+- Access data from db using a mobile phone (or even the very (computer) we use to feed the input query)
+
+* Inspiration
+- https://www.designinfo.in/p/dji-mini3-combo-kit/?gQT=1 (Really good, 4K HDR cam, really pricey)
+- https://www.amazon.in/whizfly-Cinematic-transmission-obstacle-Batteries/dp/B0DPHQW2MT/ (yet another 4K cam option, just for an idea)
+- https://www.amazon.in/Wingsstar-3xSmart-Battery-Tri-Charger-Brushless-Motor/dp/B0DFWFCGBZ/ (same thing)
+- https://www.flyrobo.in/quadcopter-drone-combo-kit-for-beginner-motor-plus-esc-plus-propeller-plus-flight-controller-plus-frame-plus-tx-rx-flyrobo
+- https://magicquill.art/demo http://magic.chenjunfeng.xyz/
+- https://hitechxyz.in/products/zmr250-freestyle-3s-4s-analog-fpv-drone-kit-1?_pos=1&_psq=ZMR250+Freestyle+3s-4s+Analog+FPV+Drone+Kit&_ss=e&_v=1.0
+  

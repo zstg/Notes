@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       606d9417-8c0c-497d-8fcd-fe2202afda31
+:END:
+#+title: Autonomous Drones
+[[id:2a9314d1-2e7d-4651-9abf-11dc24f3afc8][AD Theory]]
+[[id:adf78c93-500f-4a3d-ba3f-6d9df447e990][AD Lab]]

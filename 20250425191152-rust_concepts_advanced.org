@@ -1,0 +1,77 @@
+:PROPERTIES:
+:ID:       47bfc377-7e8c-4f78-902a-5fe933aeb04e
+:END:
+#+title: Rust concepts (advanced)
+* Simple example
+#+BEGIN_SRC rust
+#![allow(unused)]
+#[derive(Debug, Clone)]
+struct Node {
+    val: i32,
+    adjacent: Vec<Node>
+}
+
+fn main() {
+    let a = Node {
+        val: 1,
+        adjacent: vec![]
+    };
+    
+    let b = Node{
+        val: 2,
+        adjacent: vec![a.clone()]
+    };
+    dbg!(a);
+}
+#+END_SRC
+
+We can avoid that expensive =clone= operation:
+
+#+begin_src rust
+// WONT COMPILE
+#![allow(unused)]
+#[derive(Debug, Clone)]
+struct Node {
+    val: i32,
+    adjacent: Vec<&Node>
+}
+
+fn main() {
+    let a = Node {
+        val: 1,
+        adjacent: vec![]
+    };
+    
+    let b = Node{
+        val: 2,
+        adjacent: vec![&a]
+    };
+    dbg!(a);
+}
+#+end_src
+
+But we can't afford to have a node living for longer than all the nodes it has access to, so we add lifetime specs:
+#+BEGIN_src rust
+#![allow(unused)]
+#[derive(Debug, Clone)]
+struct Node<'a> {
+    val: i32,
+    adjacent: Vec<&'a Node<'a> >
+}
+
+fn main() {
+    let a = Node {
+        val: 1,
+        adjacent: vec![]
+    };
+    
+    let b = Node{
+        val: 2,
+        adjacent: vec![&a]
+    };
+
+    let c = Node { val: 3, adjacent: vec![&a] };
+    dbg!(a);
+}
+#+end_src
+

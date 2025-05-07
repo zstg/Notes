@@ -1,0 +1,70 @@
+#+title: Moral Panic
+
+* Intro and Names  
+Hello, everyone! My name is [Your Name], and today we’re diving into the fascinating world of moral panics. We will explore what they are, their effects, and how they manifest in society, with examples from history and modern times.
+
+* What is a Moral Panic?  
+A moral panic is a widespread fear or anxiety about a perceived threat to societal values or norms. These panics often emerge from the media, political leaders, or influential figures, which exaggerate or distort the dangers of a particular issue. This creates a public outcry and leads to extreme responses, even if the threat itself is either blown out of proportion or non-existent.
+
+* Stages of a moral panic
+1. Exaggeration
+The media exaggerates the scale, scope or severity of an issue.
+2. Folk devils
+Specific persons or groups are targeted and discriminated against.
+3. Disproportionality
+The public's reaction is severe, extreme and uncalled for. The reaction to the issue exceeds its actual threat.
+4. Social control
+Groups in power - the government or the majority - try to exert control to prevent spread of the issue.
+5. Volatility
+Short-term panic, long-term consequences.
+
+* Effects 
+Now, let's explore the effects of moral panics. While these social reactions can lead to positive changes, they often come with negative consequences as well.
+
+** Good Effects  
+1. **Heightened Awareness**
+Sometimes, moral panics can draw attention to real problems that need addressing. For instance, public concern over a perceived threat can lead to reforms and protective laws.
+2. **Community Mobilization** 
+In some cases, the outrage may unite people to act collectively toward addressing a societal issue, even if it's framed incorrectly.
+
+** Bad Effects  
+1. **Harmful Stereotyping** 
+Moral panics can result in unfair labeling or demonizing certain groups, often leading to discrimination. For example, during a moral panic, a specific community might be wrongly blamed for societal problems.
+2. **Scapegoating and Witch Hunts**
+
+As seen in history, moral panics sometimes lead to public trials or even violence against innocent people, based on fears and misconceptions. 
+3. **Misinformation:** 
+Often fueled by sensational media, moral panics can lead to the spread of misinformation, which may take years to correct.
+
+* Examples of Moral Panics  
+Now, let's look at a few historical and modern examples that highlight moral panics:
+
+1. **Pakistani Airlines Incident**  
+In 2016, there was a moral panic in Pakistan regarding the safety of its national airline, Pakistan International Airlines (PIA). Various crashes and safety issues led to an exaggerated perception that PIA was unsafe, despite a limited number of incidents. This contributed to damaging the airline’s reputation and public trust.
+
+2. **The Salem Witch Trials**  
+One of the most infamous moral panics in history, the Salem Witch Trials of the 1690s, saw dozens of innocent women accused of witchcraft based on unfounded fears. The trials, fueled by mass hysteria and religious extremism, led to the executions of 20 people.
+
+3. **Harry Potter**  
+In the late 1990s, the Harry Potter books sparked a moral panic among certain religious groups. They claimed the books promoted witchcraft and the occult, ignoring their themes of friendship, bravery, and good overcoming evil.
+
+4. **COVID-19**  
+The COVID-19 pandemic created a series of moral panics, including the fear of spreading the virus through specific groups of people, leading to discrimination. Misinformation about the virus's origins and prevention also exacerbated panic on a global scale.
+
+5. **Video Game Violence**  
+In the late 1990s and early 2000s, violent video games like *Doom* and *Grand Theft Auto* became the center of a moral panic, with claims that they contributed to real-world violence, despite research showing no direct link.
+
+6. **Comic Books Panic**  
+In the 1950s, comic books were seen as a moral threat, with critics arguing they led to juvenile delinquency. This panic led to congressional hearings and the eventual establishment of the Comics Code Authority, which censored many comic book themes.
+
+7. **Cell Towers Killing Birds**  
+A moral panic emerged in the early 2000s over cell phone towers, with claims that radiation from these towers was responsible for killing birds. While some studies found evidence of harm to local wildlife, the fear often ignored more complex environmental factors.
+
+* Conclusion  
+To wrap up, moral panics are a powerful social phenomenon that can shape public opinion and influence policy. While they can sometimes raise awareness about real issues, they often come with a lot of negative side effects, such as discrimination, misinformation, and unjust public reactions. The key to preventing moral panics is promoting unbiased narratives, where facts are presented based on research and analysis, not sensationalism.
+
+Moral panics present an interesting area of study, particularly in fields like media analytics and psychology. Understanding how moral panics are formed, sustained, and resolved can offer insights into the broader mechanisms of social behavior and media influence.
+
+It’s important for us to always question and critically analyze the narratives presented to us, especially in an age of rapid information exchange. Only by doing so can we avoid falling prey to exaggerated fears and hysteria.
+
+Thank you for your attention!

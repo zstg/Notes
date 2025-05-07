@@ -1,0 +1,7 @@
+.stfolder*
+.stignore
+.zettel-notes
+**/**.pdf
+**/**.docx
+**/**.pptx
+academics/*.org

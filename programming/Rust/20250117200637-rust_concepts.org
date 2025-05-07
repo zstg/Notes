@@ -1,0 +1,425 @@
+:PROPERTIES:
+:ID:       57edc790-8e14-43ab-a0a0-c78367614674
+:END:
+#+title: Rust concepts
+
+* Result
+The =Result= type is simply an enumeration of the =Error= and =Ok= types. =Ok= is returned when no error occurs, =Err= when error occurs. Think of the =Result= datatype as being classified into =Error='s and =Ok='s.
+#+BEGIN_SRC rust
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+#+END_SRC
+
+
+#+begin_src rust
+use std::io::Error;
+fn read_file(filename: &str) -> Result<String, Error> {
+    let mut file = File::open(filename)?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    Ok(contents)
+    // Note that we're NOT handling the error case. If an error occurs while trying to read the Rust compiler will handle this error ungracefully!!!!
+}
+#+end_src
+
+Assume this is called by the =main= function like so:
+#+begin_src rust
+fn main() {
+    match read_file("myfile.txt") {
+	Ok(contents) => { println!("File contents: {}", contents); },
+	Err(error) => { eprintln!("Failed to read text: {}", error); }
+    }
+}
+#+end_src
+
+Now we can understand what's happening. The =read_file= function returns either an "=Ok=" or an "=Err=" result. Depending on the result returned either the output will be printed using =println= or an error will be using =eprintln=.
+
+
+There's a _not-so-nice_ (albeit convenient) way of dealing with this. Who likes handling each "/error-able/" function (a function that /can/ return an =Err=) using this condition checking (i.e the =match= expression)?
+We can simply use =unwrap= and =expect=.
+This is actually risky because the program will be killed if said error occurs.
+
+#+BEGIN_SRC rust
+fn main() {
+    let contents = read_file("data.txt").unwrap();
+    // alternatively, if you want to print some message on failure (rather than the `RUST_BACKTRACE` message), you can use `.expect("Whoops! Program fails here!")` instead of `unwrap()`...
+    println!(contents);
+}
+#+END_SRC
+Navigate to the definition of the =unwrap= function and you'll see that it exits ungracefully.
+
+In Rust, the =unwrap= method is defined on both =Option= and =Result= types.
+For =Option=, the method definition is as follows:
+#+BEGIN_SRC rust
+impl Option<T> {
+    pub fn unwrap(self) -> T {
+        match self {
+            Some(val) => val,
+            None => panic!("called `Option::unwrap()` on a `None` value"),
+        }
+    }
+}
+#+END_SRC rust
+
+For =Result=, the method is defined as:
+#+BEGIN_SRC rust
+impl Result<T, E> {
+    pub fn unwrap(self) -> T { // where E: fmt::Debug, {
+        match self {
+            Ok(t) => t,
+            Err(e) => panic!("called `Result::unwrap()` on an `Err` value: {:?}", e),
+        }
+    }
+}
+#+END_SRC
+
+The =unwrap= method returns the contained value if the enum variant is =Some= or =Ok=, and panics with a message if the variant is =None= or =Err=.
+
+** Good =Result='s
+*** Some
+*** Ok
+** Bad =Result='s
+*** Err
+
+** Examples
+#+BEGIN_SRC rust
+use std::io::Error;
+fn main(){
+    let contents = read_file("data.txt").expect("Fail to read data.txt");
+    println!("File contents: {}", contents);
+
+    write_to_file("output.txt", &contents);
+}
+
+
+fn write_to_file(filename: &str, contents: &str) -> Result<(), Error> {
+    std::fs::write(filename, contents)
+}
+#+END_SRC
+We ignore the possible =Error= value that the =write_to_file= function can return, instead making Rust spit out a backtrace and exit ungracefully. Again, this is bad practice - we /assume/ the =write_to_file= function call succeeded and hence we don't perform this error checking.
+Note that the =write_to_file= function can return *either* a _unit_ type (i.e =(=)=, i.e nothing/void) *or* it can return an =Error=.
+Note that the unit type is [[https://doc.rust-lang.org/std/primitive.unit.html][implicitly returned by functions that don't return anything i.e have a ->]]...
+#+BEGIN_SRC rust
+fn foo() -> () {
+    
+}
+// is the same as
+fn foo() {
+    
+}
+#+END_SRC
+From this we can understand that the above snippet returns _nothing_ if there's no error, and an =Error= if there is one.
+
+
+To discourage lazy developer(s), we add this to the top of our file:
+#+BEGIN_SRC rust
+#![deny(clippy::unwrap_used)]
+#![deny(clippy::expect_used)]
+#![deny(clippy::panic)]
+#![deny(unused_must_use)]
+#+END_SRC
+
+* =Default= trait
+Use the default trait to avoid =new()= function definitions. Not much, just avoids code duplication /if/ possible.
+#+BEGIN_SRC rust
+#[derive(Debug,Default)]
+struct Player {
+    level: i8;
+    items: Vec<Item>,
+    special_power: Option<Power>
+}
+
+fn main() {
+    let p1 Player::default();
+    println!("{p1:?}");
+}
+#+END_SRC
+
+* =convert::From= and =convert::Into= traits
+** TODO
+* Cloning
+#+BEGIN_SRC rust
+struct User {
+    name: String,
+    settings: Settings, // Settings is some random struct. Its definition does not matter here.
+}
+impl User {
+    fn settings(&self) -> Settings {
+	self.settings.clone()
+	            // the compiler suggests doing this IF u think the overhead's alright...
+    }
+}
+#+END_SRC
+Do this instead. Return a reference to the original struct and let the user dereference it as per his choice/needs. It avoids allocating memory for the clone.
+#+BEGIN_SRC rust
+impl User {
+    fn settings(&self) -> &Settings {
+	self.settings	    
+    }
+}
+
+#+END_SRC
+
+* Lifetimes :ATTACH:
+:PROPERTIES:
+:ID:       b71f1885-1f8a-46ac-a2ed-53b51999e99d
+:END:
+[[attachment:clipboard-20250117T214419.png]]
+As you can see, the lifetime of =x= is longer than the lifetime of =r=.
+
+** Example
+#+BEGIN_SRC rust
+fn main() {
+    let s1 = String::from("ABCD");
+    let s2 = String::from("xyz");
+    let res = longest(s1.as_str(), s2.as_str());
+    println!("{}", res);
+}
+
+fn longest(x: &str, y: &str) -> &str {
+    if x.len() > y.len() { x } else { y }
+}
+#+END_SRC
+
+This code seems normal right? But there are problems:
+- The compiler does not know the lifetimes of x and y (let alone which one has a longer lifetime). Because =rustc= hates this uncertainty, it displays warnings. So to enforce that the function arguments have the same lifetime, do this:
+#+BEGIN_SRC rust
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() { x } else { y }
+}
+#+END_SRC
+This just says that the lifetime of the returned value will be $$min(lifetime(x), lifetime(y))$$.
+
+** More examples :ATTACH:
+:PROPERTIES:
+:ID:       6385bacb-8abc-4b2e-9403-5a72dbe4dd97
+:END:
+This works just fine. =s1= is accesible inside the =s2= scope-thingy (the purple braces) because =s1='s lifetime > =s2='s lifetime.
+#+BEGIN_SRC rust
+fn main() {
+    let s1 = String::from("ABCD");
+    {
+	let s2 = String::from("xyz");
+        let res = longest(s1.as_str(), s2.as_str());
+	println!("{res}");
+    }
+}
+#+END_SRC
+
+This does /not/ work:
+#+BEGIN_SRC rust
+fn main() {
+    let s1 = String::from("ABCD");
+    let res;
+    {
+	let s2 = String::from("xyz");
+	res = longest(s1.as_str(), s2.as_str()); // on a side note res doesn't need to be defined as mutable since this is our first and only assignment...
+    }
+    println!("{}", res);
+}
+fn longest<'a>(x: &'a str, y: &'a str ) -> &'a str {
+    // same thing
+}
+#+END_SRC
+Why would this function not work? 
+
+Look at the definition of the =longest= function. It returns =s2= when =s2= is the longer of the 2 strings. But what would happen outside the purple braces? =s2= is dropped. Then that means =res= could be undefined (if =res= is =s2=).
+
+To put it simply, =res= could return =s2=. But =s2= would no longer be in scope when =res= is printed.... We say =s2= does not _live long enough_, ergo a /dangling reference/ to s2 (could) be created.
+
+
+[[attachment:clipboard-20250117T222150.png]]
+Say you decide to (stupidly) define the =longest= function like this. We don't care about the lifetime of =y= anymore (since we always return x), so we've made src_rust{y: &'a str} to src_rust{y: &str}. Now the code works. Why?
+
+The =longest= function always returns a reference that has the same lifetime as =x= i.e =s1=. Obviously =s1= lives till the end of the =main= function - therefore printing =result= works.
+As is the case of C, the lifetime of the output has to always be the lifetime of (at least) 1 of the parameters.
+
+[[attachment:clipboard-20250117T223044.png]]
+Since =result= is created within =longest='s stack frame, we can't return a reference to =result=.
+To remedy that, we make use of _owned types_ such as src_rust{String}s:
+#+BEGIN_SRC rust
+fn longest<'a'>(x: &str, y: &str) -> String {
+    let res = String::from("really long string");
+    res
+}
+#+END_SRC 
+Because src_rust{String}s are owned types, they relinquish ownership to the callee (thus the variable travels outside its stack frame i.e its scope).
+
+[[attachment:clipboard-20250117T224317.png]]
+If we try to use =i= after =first_sentence= has gone out of scope, we get an error...
+
+*** Lifetime illusion :ATTACH:
+:PROPERTIES:
+:ID:       81289b05-cff5-454b-b371-46d9517e3c5a
+:END:
+#+BEGIN_SRC rust
+fn main() {}
+
+fn first_word<'a>(s: &'a str) -> &'a str {
+    let bytes = s.as_bytes();
+    for(i, &item) in bytes.iter().enumerate() { // note that enumerate returns (key,value) pairs
+	if item==b' ' {
+	    return &s[0..i]; // return the first few bytes
+	}
+    }
+    &s[...]
+}
+#+END_SRC
+Remove the ='a= stuff. Shouldn't the src_rust{&s[...]} error out? There's no guarantee that s and the output have the same lifetime! The simple reason this works is compiler optimizations.
+[[attachment:clipboard-20250117T225203.png]]
+Note that =s= gets its own lifetime parameter (i.e the ='a=) implicitly. Also, we have only 1 input parameter, =s= and hence the (one) output parameter is also assigned the same lifetime. 
+* Generics
+* Inheritance
+Rust does NOT support inheritance.
+* Polymorphism
+This lets you treat the same piece of data as diff types.
+#+BEGIN_SRC rust
+struct Sedan;
+
+impl Sedan {
+    fn drive(&self) { println!("Sedan is driving"); }
+}
+
+fn main() {
+    let car = Sedan;
+    car.drive();
+}
+#+END_SRC
+
+Say we want a function ~road_trip~:
+#+begin_src rust
+struct Sedan;
+
+impl Sedan {
+    fn drive(&self) {
+	println!("Sedan is driving");
+    }
+}
+
+fn road_trip(vehicle: &Sedan) {
+    vehicle.drive();
+}
+
+fn main() {
+    let car = Sedan;
+    road_trip(&car);
+}
+#+end_src
+
+
+Now let's say we have an SUV struct that does something similar:
+#+BEGIN_SRC rust
+struct SUV;
+
+impl SUV {
+    fn drive(&self) {
+	println!("SUV is driving");
+    }
+}
+#+END_SRC
+
+We run into a problem here. We have to create a separate ~road_trip~ function - so we'll now have a ~road_trip_sedan~ and a ~road_trip_suv~ function. Both these functions are almost identical.
+
+Both sedans and SUVs are "land capable" vehicles, so let's make use of this:
+
+#+BEGIN_SRC rust
+struct Sedan;
+
+trait LandCapable {
+    fn drive(&self);
+}
+
+
+impl LandCapable for Sedan {
+    fn drive(&self) {
+	println!("Sedan is driving")
+    }
+}
+
+struct SUV;
+impl LandCapable for SUV {
+    fn drive(&self) {
+	println!("SUV is driving")
+    }
+}
+
+#+END_SRC
+Now what do we do about the ~road_trip~ functions?
+
+#+BEGIN_SRC rust
+fn road_trip(vehicle: &dyn LandCapable){
+    vehicle.drive();
+}
+
+fn road_trip(vehicle: &impl LandCapable){
+    vehicle.drive();
+}
+#+END_SRC
+
+The latter option, _static dispatch_, is faster than _dynamic dispatch_ for larger programs.
+
+** Default traits
+#+BEGIN_SRC rust
+trait LandCapable {
+    fn drive(&self) {
+	println!("Default drive")
+    }
+}
+
+
+struct Sedan;
+impl LandCapable for Sedan {} // if the `drive' method is called on sedans, it'll make use of the default method
+
+struct SUV;
+impl LandCapable for SUV {
+    fn drive(&self) {
+	println!("SUV is driving")
+    }
+}
+
+fn main() {
+    let S = SUV;
+    let s = Sedan;
+    S.drive();
+    s.drive();
+}
+#+END_SRC
+
+** Inheritance
+#+BEGIN_SRC rust
+trait WaterCapable {
+    fn float(&self) {
+	println!("Default float")
+    }
+}
+trait Amphibious: LandCapable+WaterCapable {}
+
+struct Hovercraft;
+impl Amphibious for Hovercraft {}
+#+END_SRC
+
+But we haven't implemented the ~LandCapable~ and ~WaterCapable~ traits for ~Hovercraft~. Let's fix that:
+#+BEGIN_SRC rust
+struct Hovercraft;
+impl Amphibious for Hovercraft {}
+impl LandCapable for Hovercraft {}
+impl WaterCapable for Hovercraft {}
+#+END_SRC
+We don't have to define the functions though - we're reusing the default implementations ("default drive" and "default float" resp).
+An amphibious vehicle will be able to drive and float, so let's create such a function:
+#+BEGIN_SRC rust
+fn traverse_frozen_lake(vehicle: &impl Amphibious) {
+    vehicle.drive();
+    vehicle.float();
+}
+
+fn main() {
+    let hc = Hovercraft;
+    traverse_frozen_lake(&hc);
+}
+#+END_SRC
+
+
+[[id:47bfc377-7e8c-4f78-902a-5fe933aeb04e][Rust concepts (advanced)]]

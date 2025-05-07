@@ -1,0 +1,133 @@
+:PROPERTIES:
+:ID:       eed69c71-18ac-48ff-b9f4-637dd552563c
+:END:
+#+title: CD Lab 1b
+* Question
+Write a program in C to implement Lexical Analyzer which generates tokens for given input C coding and also print the symbol table which has been generated during the lexical analysis.
+Do this for the sample program below:
+#+BEGIN_SRC C
+#include <stdio.h>
+int main() {
+  int num, rem_123, value, i=0, sum=0;
+  printf("enter n");
+  scanf("%d",&num);
+  printf("enter the values");
+  while(i<num)
+    {
+      scanf("%d",&value);
+      rem_123= value %2;
+      if(rem_123!=0)
+	sum=sum+ value;
+      i=i+1;
+    }
+  printf("sum of odd nos= %d\n", sum);
+  return 0;
+}
+#+END_SRC
+
+* Solution
+
+#+BEGIN_SRC C
+%{
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void print_symbol_table();
+
+typedef struct Symbol {
+    char name[100];
+    char type[50];
+    struct Symbol *next;
+} Symbol;
+
+Symbol *symbol_table = NULL;
+
+void add_to_symbol_table(char *name, char *type) {
+    Symbol *new_symbol = (Symbol *)malloc(sizeof(Symbol));
+    strcpy(new_symbol->name, name);
+    strcpy(new_symbol->type, type);
+    new_symbol->next = symbol_table;
+    symbol_table = new_symbol;
+}
+
+%}
+
+identifier [a-zA-Z_][a-zA-Z0-9_]*
+number [0-9]+
+keyword (int|char|void|return|if|while|scanf|printf)
+
+%%
+
+#.* { /* Skip preprocessor comments */ }
+
+{keyword} {
+    printf("\n%s is a Keyword", yytext);
+    add_to_symbol_table(yytext, "Keyword");
+}
+
+{identifier} {
+    printf("\n%s is an Identifier", yytext);
+    add_to_symbol_table(yytext, "Identifier");
+}
+
+{number} {
+    printf("\n%s is a Number", yytext);
+    add_to_symbol_table(yytext, "Number");
+}
+
+"+" { printf("\n%s is an Arithmetic Operator", yytext); }
+"-" { printf("\n%s is an Arithmetic Operator", yytext); }
+"*" { printf("\n%s is an Arithmetic Operator", yytext); }
+"/" { printf("\n%s is an Arithmetic Operator", yytext); }
+"=" { printf("\n%s is an Assignment Operator", yytext); }
+"==" { printf("\n%s is a Comparison Operator", yytext); }
+"!=" { printf("\n%s is a Comparison Operator", yytext); }
+
+[ \t\n] { /* Skip whitespace */ }
+
+%%
+
+int main(int argc, char **argv) {
+    if(argc > 1) {
+        FILE *f1;
+        f1 = fopen(argv[1], "r");
+        if(f1) {
+            yyin = f1;
+        }
+    }
+    yylex();
+    print_symbol_table();
+    return 0;
+}
+
+void print_symbol_table() {
+    Symbol *current = symbol_table;
+    printf("\n\n------------------------------------------\n");
+    printf("| %-20s | %-15s |\n", "Symbol", "Type");
+    printf("------------------------------------------\n");
+
+    while (current) {
+        printf("| %-20s | %-15s |\n", current->name, current->type);
+        current = current->next;
+    }
+
+    printf("------------------------------------------\n");
+}
+
+int yywrap() { return -1; }
+#+END_SRC
+
+* Output :ATTACH:
+:PROPERTIES:
+:ID:       95d8209d-d731-4b56-9f5b-411c67b8c36f
+:END:
+Compile and run via:
+#+BEGIN_SRC shell
+lex ./tokenizer.l && gcc ./lex.yy.c; ./a.out test.c
+#+END_SRC
+
+[[attachment:clipboard-20250113T141728.png]]
+
+[[attachment:clipboard-20250113T141749.png]]
+

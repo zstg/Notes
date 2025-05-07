@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       113142b9-bb64-4619-947c-73cffee39434
+:END:
+#+title: Autonomous Drones Module 1 Introduction to Drones
+
+#+BEGIN_VERSE
+DRONE → Dynamic Remote-Controlled Navigational Equipment
+#+END_VERSE
+
+:NOTE: UAVs, by definition, fly in the atmosphere.
+
+* Types
+** Nano
+** Micro
+** Small
+** Medium
+** Large
+
+* History of drones
+
+* Types of drones
+** Single rotor
+** Multi-rotor
+** Fixed wing
+** Hybrid drones

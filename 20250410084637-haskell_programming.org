@@ -1,0 +1,128 @@
+:PROPERTIES:
+:ID:       2fd75729-0c3d-4dfa-8b8a-b1d2e6d201f3
+:END:
+#+title: Haskell Programming
+* Install Haskell
+#+begin_src bash
+nix-shell -p ghc
+ghci
+#+end_src
+
+* Basics
+#+begin_src haskell
+2 + 15
+5 / 2
+
+1 /= 1.0
+
+'A':" SMALL CAT" 
+5:[1,2,3,4,5]
+
+"Steve Buscemi" !! 6
+[9.4,33.2,96.2,11.2,23.25] !! 1
+
+"Abrakadabra" `compare` "Zebra"  -- LT
+show True -- "True" - displays as a String
+read "[1,2,3,4]" ++ [3] -- [1,2,3,4,3] -- interprets the stuff inside a String
+#+end_src
+** Switch statements
+#+BEGIN_SRC haskell
+sayMe :: (Integral a) => a -> String  -- this is what defines sayMe as a function! This is a must here!
+sayMe 1 = "One!"  
+sayMe 2 = "Two!"  
+sayMe 3 = "Three!"  
+sayMe 4 = "Four!"  
+sayMe 5 = "Five!"  
+sayMe x = "Not between 1 and 5"
+#+END_SRC
+** Functions
+#+BEGIN_SRC haskell
+addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)  
+addVectors (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+#+END_SRC
+* Conditionals
+#+BEGIN_SRC haskell
+doubleSmallNumber x = if x > 100  
+                        then x  
+                        else x*2
+-- Needless to say, we could have written this in 1 line...
+#+END_SRC                        
+* Functions
+#+begin_src haskell
+succ 8
+succ (9 * 10)
+min 9 10
+(succ 9) + (max 5 4) + 1
+product [1,2,5,6,7,9,2,0]
+sum [5,2,1,6,3,2,5,7]
+
+head [5,4,3,2,1] -- returns the first element
+tail [5,4,3,2,1] -- returns everything except the first
+last [5,4,3,2,1] -- returns the last element
+init [5,4,3,2,1] -- returns everything except the last
+length [5,4,3,2,1] -- 5
+null [1,2,3]  -- null [] returns True
+reverse [5,4,3,2,1]
+
+take 3 [5,4,3,2,1] -- returns the first 3 elements: [5 4 3]
+take 5 [1,2] -- [1 2]
+take 0 [6,6,6] -- []
+
+drop 3 [5,4,3,2,1] -- drops the first 3 elements: [2 1]
+4 `elem` [3,4,5,6] -- elem 4 [3,4,5]: True
+
+[1..20] -- [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]  
+['K'..'Z'] -- "KLMNOPQRSTUVWXYZ"
+[2,4..20] -- [2,4,6,8,10,12,14,16,18,20]
+[3,6,20] -- [3,6,9,12,15,18]
+
+-- cycle takes a list and cycles it into an infinite list. If you just try to display the result, it will go on forever so you have to slice it off somewhere.
+take 10 (cycle [1,2,3]) -- [1,2,3,1,2,3,1,2,3,1]
+take 12 (cycle "LOL ") -- "LOL LOL LOL " 
+
+-- repeat takes an element and produces an infinite list of just that element. It's like cycling a list with only one element.
+take 10 (repeat 5)
+replicate 10 5 -- [5,5,5,5,5,5,5,5,5,5]
+
+
+fst (8,11)
+snd ("Wow", False) --  these functions don't work on lists!
+
+
+zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"] 
+zip [1,2,3,4,5] [5,5,5,5,5]
+zip [1 .. 5] ["one", "two", "three", "four", "five"] 
+zip [1..] ["apple", "orange", "cherry", "mango"]
+#+end_src
+
+* Examples
+** List comprehensions
+#+BEGIN_SRC haskell
+[ x | x <- [10..20], x /= 13, x /= 15, x /= 19] 
+[ x*y | x <- [2,5,10], y <- [8,10,11], x*y > 50]
+#+END_SRC
+
+#+BEGIN_SRC haskell
+let nouns = ["hobo","frog","pope"]  
+let adjectives = ["lazy","grouchy","scheming"]  
+[adjective ++ " " ++ noun | adjective <- adjectives, noun <- nouns]  
+-- ["lazy hobo","lazy frog","lazy pope","grouchy hobo","grouchy frog",  
+-- "grouchy pope","scheming hobo","scheming frog","scheming pope"]
+#+END_SRC
+
+** Square root of integers from 3..7
+#+BEGIN_SRC haskell
+[ sqrt x | x <- [3..7] ]
+#+END_SRC
+
+** RemoveNonUpperCase function
+#+BEGIN_SRC haskell
+removeNonUpperCase x = [ char | char <- x, char `elem` ['A'..'Z'] ]
+-- removeNonUpperCase(x) = [ i for i in x where i in 'A'..'Z' ]
+#+END_SRC
+
+** Set of right triangles with perimeter 24
+#+BEGIN_SRC haskell
+let rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]
+rightTriangles'
+#+END_SRC

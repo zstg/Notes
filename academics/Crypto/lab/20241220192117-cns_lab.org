@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       a9a2a26b-70ab-4e07-a6b4-5d22d06b169c
+:END:
+#+title: CNS Lab
+[[id:036fe402-d2c8-42a1-8743-2b8cb7a14980][CNS Lab 1]]
+[[id:b55cecd9-fe8e-46e0-8f15-40c0c00d875c][CNS Lab 2]]
+
