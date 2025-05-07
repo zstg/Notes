@@ -1,4 +1,5 @@
 name: Generate static org-roam-ui page
+
 on:
   push:
     branches:
@@ -12,6 +13,7 @@ permissions:
 jobs:
   main:
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - name: Generate org-roam-ui page
         uses: ikoamu/publish-org-roam-ui@main
