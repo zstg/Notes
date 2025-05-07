@@ -12,7 +12,7 @@
   - [X] waybar
   - [X] kitty
 - [X] TODO finish StratOS repo fix some packages
-- [ ] build new GNOME and Hyprland ISOs
+- [X] build new GNOME and Hyprland ISOs
 - [X] Update brl
 - [ ] remove conky from stratos, place in website
 - [ ] remove nwg-dock-hyprland
@@ -21,7 +21,7 @@
 - [ ] shell history not getting saved - fix
 - [ ] multilib
 - [X] sep keybindings.conf
-- [ ] swayosd-git
+- [X] swayosd-git
 - [ ] fix keybindings (dont blindly use ur HL config)
 - [ ] preload nwg-clipman and others in hl conf
 - [ ] hyprland config /may/  need fixing
@@ -29,11 +29,11 @@
 - [ ] update maneki pics (newer pics)
 - [ ] Calamares - give an option to install apps there itself  (check arcadia-calamares-config)
   - operations: try-remove
-- [ ] why is the NetworkManager icon blue
+- [-] why is the NetworkManager icon blue
 - [ ] proper semver for ISO and packages
 - [ ] set up powertop and +tlp+ power-profiles-daemon
 - [ ] *Fix Calamares not being able to install the distro*
-- [ ] Have a look at making the mirrors
+- [-] Have a look at making the mirrors
 - [ ] Grab repo issue
 - [ ] Check out aurutils for the packages that are failing to build
 - [ ] Update Maneki neko for Hyprland (consider =nwg-look= (and =lxappearance= ?))
